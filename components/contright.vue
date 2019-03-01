@@ -33,7 +33,7 @@
             width="200"
             trigger="hover">
             <!-- <img src="http://www.xiangjv.top/email.png" alt=""> -->
-            <span>1090464974@qq.com</span>
+            <span>http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=root@linhut.cn</span>
             <img   slot="reference" src="http://www.xiangjv.top/email.png" title="asd">
           </el-popover>
         </div>
