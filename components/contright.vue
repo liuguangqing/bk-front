@@ -2,11 +2,41 @@
   <section>
     <div class="cont_top">
       <div class="right_title">
-        <h2>公告</h2>
+        <h2>欢迎交流</h2>
       </div>
-      <div class="right_cont">
-        <div>本站采用Nuxtjs+Wordpress Rest Api渲染页面，源码存放在Github</div>
-        <div>github</div>
+      <div class="right_cont linkmy">
+        <div>
+          <el-popover
+            placement="bottom"
+            width="200"
+            trigger="hover">
+            <img class="qrcode" src="http://www.xiangjv.top/weixinqrcode.png" alt="">
+            <img slot="reference" src="http://www.xiangjv.top/weixin.png" title="asd">
+          </el-popover>  
+          <el-popover
+            placement="bottom"
+            width="200"
+            trigger="hover">
+            <img class="qrcode" src="http://www.xiangjv.top/QQqrcode.png" alt="">
+            <img slot="reference" src="http://www.xiangjv.top/QQ.png" title="asd">
+          </el-popover>
+          <el-popover
+            placement="bottom"
+            width="250"
+            trigger="hover">
+            <!-- <img src="http://www.xiangjv.top/email.png" alt=""> -->
+            <span>https://github.com/liuguangqing</span>
+            <img   slot="reference" src="http://www.xiangjv.top/github.png" title="asd">
+          </el-popover>
+          <el-popover
+            placement="bottom"
+            width="200"
+            trigger="hover">
+            <!-- <img src="http://www.xiangjv.top/email.png" alt=""> -->
+            <span>1090464974@qq.com</span>
+            <img   slot="reference" src="http://www.xiangjv.top/email.png" title="asd">
+          </el-popover>
+        </div>
       </div>
     </div>
     <div class="cont_mid">
@@ -15,20 +45,10 @@
       </div>
       <div class="right_cont">
         <div class="rev_list">
-          <div class="rev_item">
-            <h2 class="title">Grid布局</h2>
-            <div class="text">text布局</div>
-            <div class="pick">时间 ： 2018-12-10</div>
-          </div>
-          <div class="rev_item">
-            <h2 class="title">Grid布局</h2>
-            <div class="text">text布局</div>
-            <div class="pick">时间 ： 2018-12-10</div>
-          </div>
-          <div class="rev_item">
-            <h2 class="title">Grid布局</h2>
-            <div class="text">text布局</div>
-            <div class="pick">时间 ： 2018-12-10</div>
+          <div class="rev_item" v-for="(ite0, ind0) in essayList" :key="ind0">
+            <h2 class="title">{{ite0.es_title}}</h2>
+            <div class="text">{{ite0.es_tags}}</div>
+            <div class="pick">时间 ： {{ite0.es_isTime}}</div>
           </div>
         </div>
       </div>
@@ -39,8 +59,11 @@
       </div>
       <div class="right_cont">
         <div class="classItem">
-          <el-tag>前端笔记(27)</el-tag>
-          <el-tag type="success">JavaScript(18)</el-tag>
+          <!-- <nuxt-link v-for="ite in navList" :to="'/?type=' + ite.cont + '&pageNo=1'" :key="ite"> -->
+          <nuxt-link v-for="(ite, ind) in navList" :to="'/home/' + ite.cont + '-1'" :key="ind">
+            <el-tag>{{ite.title}}</el-tag>
+          </nuxt-link>
+          <!-- <el-tag type="success">JavaScript(18)</el-tag>
           <el-tag type="info">demo(14)</el-tag>
           <el-tag type="warning">JavaScript(18)</el-tag>
           <el-tag type="warning">demo(14)</el-tag>
@@ -51,23 +74,66 @@
           <el-tag type="danger">bootstrap(3)</el-tag>
           <el-tag type="danger">WordPress(3)</el-tag>
           <el-tag type="danger">canvas(3)</el-tag>
-          <el-tag type="danger">SASS(3)</el-tag>
+          <el-tag type="danger">SASS(3)</el-tag>--> 
         </div>
-        <!-- <div>github</div> -->
       </div>
     </div>
   </section>
 </template>
 <script>
+import servers from '../plugins/axios'
+
 export default {
   data() {
-    return {}
+    return {
+      navList: [],
+      essayList: []
+    }
   },
   components: {},
-  mounted() {}
+  mounted() {
+    this.getnav()
+    this.getessay()
+  },
+  methods: {
+    async getessay(){
+      let parmasTemp = {
+        pageNow:1,
+        pageSize:3
+      }
+      let m = await servers.getessayPage(parmasTemp)
+      this.essayList = m.data
+    },
+    async getnav() {
+      let data = await servers.navData()
+      // console.log("nav", fn(data.data));
+      function fn(arrs) {
+        let arrtemp = []
+        rec(arrs)
+        function rec(arrs) {
+          if (arrs.length > 0) {
+            arrs.forEach(element => {
+              if (element.rank == 'yi' && element.data.length > 0) {
+                rec(element.data)
+              } else {
+                arrtemp.push(element)
+              }
+            })
+          }
+        }
+        return arrtemp
+      }
+      this.navList = fn(data.data)
+      console.log(this.navList)
+    }
+  }
 }
 </script>
 <style lang="less" scoped>
+a{
+  display: inline-block;
+  padding: 0 5px 10px 0
+}
 .el-col .grid-content {
   background-color: transparent;
 }
@@ -81,6 +147,9 @@ export default {
     padding: 7px;
     background-color: rgba(0, 0, 0, 0.2);
   }
+}
+.qrcode {
+  width: 100%;
 }
 section > div {
   padding: 10px;
@@ -102,9 +171,22 @@ section > div {
     color: #777;
     padding: 10px 6px 6px;
   }
+  .linkmy{
+    text-align: center;
+    img{
+      width: 30px;
+      &::after {
+        content: '';
+        display: inline-block;
+        background-color: #000;
+        width: 1px;
+        height: 2px
+      }
+    }
+  }
   .rev_item {
     margin-bottom: 8px;
-    padding: 8px  ;
+    padding: 8px;
     // border-bottom: 1px solid #e9eaed;
     background-color: #e9eaed;
     .title {

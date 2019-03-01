@@ -4,7 +4,7 @@
             <img src="../assets/images/user.png" alt="">
         </div>
         <div class="asidecon">
-            <nuxt-link to="/">首页</nuxt-link>
+            <nuxt-link to="/home/-1">首页</nuxt-link>
             <nuxt-link to="/msg">公告</nuxt-link>
             <nuxt-link to="/tag">标签云</nuxt-link>
             <nuxt-link to="/tag">前端相关</nuxt-link>

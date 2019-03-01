@@ -22,9 +22,24 @@
 </template>
 <script>
 import contleft from '~/components/contleft'
+
+// import servers from '../plugins/axios'
 export default {
   components: {
     contleft
+  },
+  data() {
+    return {
+      tagList: []
+    }
+  },
+  mounted() {
+    this.tagList
+  },
+  methods: {
+    // async tagList() {
+    //   let data = await servers.
+    // } 
   }
 }
 </script>

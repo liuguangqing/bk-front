@@ -18,7 +18,8 @@ export default {
   components: {
     headecom
   },
-  mounted() {}
+  mounted() {
+  }
 }
 </script>
 <style lang="less">
@@ -29,7 +30,7 @@ export default {
 }
 .conttall {
   padding-top: 60px;
-  background: url(../assets/images/bkbg.jpeg) no-repeat center top / 100%;
+  background: url(../assets/images/bkbg.jpeg) repeat center top / 100%;
   background-attachment: fixed;
   height: 100%;
   box-sizing: border-box;

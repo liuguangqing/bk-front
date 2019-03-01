@@ -45,7 +45,7 @@ export default {
     footercom
   },
   mounted() {
-    console.log(this.getData)
+    // console.log(this.getData)
     // this.geturl()
     // this.getnav()
     // this.getInfo()
@@ -54,19 +54,19 @@ export default {
   methods: {
     async geturl() {
       let data = await servers.rightData()
-      console.log(data)
+      // console.log(data)
     },
     async getnav() {
       let data = await servers.navData()
-      console.log(data)
+      // console.log(data)
     },
     async getInfo() {
       let data = await servers.userInfoData()
-      console.log(data)
+      // console.log(data)
     },
     async getinsertData() {
       let data = await servers.insertData()
-      console.log(data)
+      // console.log(data)
     }
   }
 }

@@ -76,13 +76,20 @@ export default {
   getfriend() {
     return postData(Api + '/getfriend')
   },
-  // 文章列表
-  getessay() {
-    return postData(Api + '/getessay')
+  // 文章列表（所有）
+  getessayAll(params) {
+    return postData(Api + '/getessayAll', params)
+  },
+  // 文章列表（分页）
+  getessayPage(params) {
+    return postData(Api + '/getessayPage', params)
   },
   // 文章详情
   getessayDetial(params) {
-    return postData(Api + '/getessayDetial' , params)
-  }
-  
+    return postData(Api + '/getessayDetial', params)
+  },
+  // 标签云
+  // getTagsList(params) {
+  //   return postData(Api + '/getTagsList', params)
+  // }
 }

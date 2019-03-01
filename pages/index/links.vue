@@ -44,6 +44,7 @@ export default {
   },
   mounted() {
     this.togetData()
+    console.log(123)
   },
   methods: {
     async togetData() {

@@ -1,8 +1,7 @@
 const pkg = require('./package')
 
 module.exports = {
-  mode: 'universal',
-
+  mode: 'spa',
   /*
    ** Headers of the page
    */
@@ -26,13 +25,16 @@ module.exports = {
       type: 'image/x-icon',
       href: '/favicon.ico'
     }],
+    script:[{
+      src: '/js/share.js'
+    }]
   },
 
   /*
    ** Customize the progress-bar color
    */
   loading: {
-    color: '#fff'
+    color: '#000'
   },
 
   /*
@@ -41,14 +43,17 @@ module.exports = {
   css: [
     'element-ui/lib/theme-chalk/index.css',
     '~/assets/css/reset.css',
-    '~/assets/css/style.css'
+    '~/assets/css/style.css',
+    // 'prismjs/themes/prism-dark.css',
   ],
 
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '@/plugins/element-ui'
+    { src: '@/plugins/element-ui'},
+    { src: '@/plugins/tongji.js', ssr: false },
+    { src: '@/plugins/prism.js'},
   ],
 
   /*
@@ -69,7 +74,8 @@ module.exports = {
   proxy: [
     [
       '/api',{
-        target: 'http://172.20.47.245:2345/api',
+        // target: 'http://172.20.54.151:2345/api',
+        target: 'http://47.107.171.45:2345/api',
         changeOrigin:true,
         pathRewrite: {
         '^/api': '/'

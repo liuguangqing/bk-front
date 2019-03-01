@@ -29,41 +29,48 @@ export default {
     }
   },
   mounted() {
-    // this.pageType = this.geturl('type')
-    if (this.pageType && this.pageType != '') {
-      this.params.pageType = this.pageType
-    }
-    // this.params.pageNow = this.geturl('pageNo')
-    this.params.pageSize = 3
-    this.getessayPage(this.params)
+    
+
+    this.getessayPage()
+    console.log('home')
+  },
+  watch: {
+　　// 利用watch方法检测路由变化：
+　　'$route': function (to, from) {
+      this.getessayPage()
+　　　// 拿到目标参数 to.query.id 去再次请求数据接口
+　　}
   },
   methods: {
-    // async getessayAll(params) {
-    //   let data = await servers.getessayAll(params)
-    //   this.dataList = data.data
-    //   console.log(data)
-    // },
     geturl(getParam) {
-      this.$route.params.xiangjv.split('xiangjv:')[1].split('&')
-      var paraArr = this.$route.params.xiangjv.split('xiangjv:')[1].split('&')
-      for (var i = 0; i < paraArr.length; i++) {
-        if (getParam == paraArr[i].split('=')[0]) {
-          return paraArr[i].split('=')[1]
-        }
+      let paramsTemp = this.$route.params.home + ''
+      if(getParam == 'type'){
+        return paramsTemp.split('-')[0]
+      }else if(getParam == 'pageNo'){
+        return paramsTemp.split('-')[1]
       }
-      return ''
     },
     async getessayPage(params) {
-      let data = await servers.getessayPage(params)
+      this.pageType = this.geturl('type')
+      if (this.pageType && this.pageType != '') {
+        this.params.pageType = this.pageType
+      }
+      this.params.pageNow = this.geturl('pageNo')
+      this.params.pageSize = 3
+      console.log('this.params', this.params)
+      // console.log('params', params)
+
+      let data = await servers.getessayPage(this.params)
       this.dataList = data.data
       console.log('this.dataList', this.dataList)
       this.fenPage()
     },
     fenPage() {
       let tmepUrl = location.href
-      if (tmepUrl.indexOf('pageNo') >= 0) {
-        tmepUrl = '/xiangjv:type='+this.geturl('type')+'&pageNo='
+      if (this.geturl('pageNo')) {
+        tmepUrl = '/home/'+this.geturl('type')+'-'
       }
+      console.log('tmepUrltmepUrltmepUrltmepUrltmepUrl',tmepUrl)
       const slp = new SimplePagination(50)
       slp.init({
         container: '.paging_child',
@@ -79,9 +86,9 @@ export default {
         }
       })
       // 定位当前页
-      // if (this.geturl('pageNo')) {
-      //   slp.gotoPage(this.geturl('pageNo') * 1)
-      // }
+      if (this.geturl('pageNo')) {
+        slp.gotoPage(this.geturl('pageNo') * 1)
+      }
       document.getElementById('page-go').addEventListener('submit', e => {
         e.preventDefault()
         slp.gotoPage(+document.getElementById('page-num').value)
