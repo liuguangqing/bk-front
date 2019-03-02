@@ -1,12 +1,12 @@
 const pkg = require('./package')
 
 module.exports = {
-  mode: 'spa',
+  mode: 'universal',
   /*
    ** Headers of the page
    */
   head: {
-    title: pkg.name,
+    title: '香菊网',
     meta: [{
         charset: 'utf-8'
       },
@@ -17,7 +17,7 @@ module.exports = {
       {
         hid: 'description',
         name: 'description',
-        content: pkg.description
+        content: '香菊网，一个个人的学习网站，共分享交流'
       }
     ],
     link: [{
@@ -54,6 +54,8 @@ module.exports = {
     { src: '@/plugins/element-ui'},
     { src: '@/plugins/tongji.js', ssr: false },
     { src: '@/plugins/prism.js'},
+    { src: '@/plugins/filters.js'},
+    
   ],
 
   /*
@@ -107,5 +109,15 @@ module.exports = {
       test: /\.less$/,
       use: ['style-loader', 'css-loader', 'less-loader']
     }]
-  }
+  },
+  // generate: {
+  //   routes: function () {
+  //     return axios.get('https://my-api/users')
+  //     .then((res) => {
+  //       return res.data.map((user) => {
+  //         return '/users/' + user.id
+  //       })
+  //     })
+  //   }
+  // }
 }

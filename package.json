@@ -1,5 +1,5 @@
 {
-  "name": "bkdes",
+  "name": "xiangjv",
   "version": "1.0.0",
   "description": "nkdes bk",
   "author": "liuguangqing",
@@ -8,6 +8,7 @@
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate-prod": "cross-env SITE_ENV=prod nuxt generate",
     "generate": "nuxt generate"
   },
   "dependencies": {
