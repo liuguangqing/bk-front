@@ -1,12 +1,12 @@
 const pkg = require('./package')
 
 module.exports = {
-  mode: 'universal',
+  mode: 'spa',
   /*
    ** Headers of the page
    */
   head: {
-    title: '香菊网',
+    title: pkg.name,
     meta: [{
         charset: 'utf-8'
       },
@@ -17,7 +17,7 @@ module.exports = {
       {
         hid: 'description',
         name: 'description',
-        content: '香菊网，一个个人的学习网站，共分享交流'
+        content: pkg.description
       }
     ],
     link: [{
@@ -109,7 +109,7 @@ module.exports = {
       test: /\.less$/,
       use: ['style-loader', 'css-loader', 'less-loader']
     }]
-  },
+  }
   // generate: {
   //   routes: function () {
   //     return axios.get('https://my-api/users')
