@@ -34,7 +34,6 @@
 <script>
 import contleft from '~/components/contleft'
 import servers from '~/plugins/axios'
-
 export default {
   head() {
     return {
@@ -58,13 +57,15 @@ export default {
       value2: null,
       value5: 3.7,
       essayId: '',
-      essayDetail: {}
+      essayDetail: {},
+      load: ''
     }
   },
   components: {
     contleft,
   },
   mounted() {
+    this.load = this.$loading({ fullscreen: true })
     console.log(this.$route)
     this.essayId = this.$route.params.indexDetail
     this.getGoodsDetil(this.essayId)
@@ -79,13 +80,10 @@ export default {
     async getGoodsDetil() {
       let params = { essayId: this.essayId }
       let data = await servers.getessayDetial(params)
+      this.load.close()
       data.data.es_content = data.data.es_content.replace(/!!&!!/g, /'/)
       this.essayDetail = data.data
       console.log(Prism)
-      // console.log('执行强制刷新', Prism.highlightAll())
-      // var block = document.getElementsByClassName('essayContent')
-      // Prism.highlightElement(block);
-      // console.log(block)
     }
   }
 }

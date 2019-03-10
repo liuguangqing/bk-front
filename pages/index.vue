@@ -68,6 +68,9 @@ export default {
       let data = await servers.insertData()
       // console.log(data)
     }
+  },
+  mounted(){
+        // let loadingInstance1 = Loading.service({ fullscreen: true });
   }
 }
 </script>

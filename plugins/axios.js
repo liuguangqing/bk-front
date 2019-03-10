@@ -1,6 +1,8 @@
+import Vue from 'vue'
 import axios from 'axios'
 import {
-  Message
+  Message,
+  Notification
 } from 'element-ui'
 import qs from 'qs'
 
@@ -26,14 +28,14 @@ service.interceptors.request.use((config) => {
 
 // 返回状态判断
 service.interceptors.response.use(function (res) {
-  Message({
+  Notification({
     message: '返回数据',
     type: 'success',
     duration: 5 * 1000
   })
   return res.data
 }, function (error) {
-  Message({
+  Notification({
     message: '错误',
     type: 'error',
     duration: 5 * 1000

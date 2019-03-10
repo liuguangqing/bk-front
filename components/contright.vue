@@ -11,31 +11,35 @@
             width="200"
             trigger="hover">
             <img class="qrcode" src="http://www.xiangjv.top/weixinqrcode.png" alt="">
-            <img slot="reference" src="http://www.xiangjv.top/weixin.png" title="asd">
+            <img slot="reference" src="http://www.xiangjv.top/weixin.png">
           </el-popover>  
           <el-popover
             placement="bottom"
             width="200"
             trigger="hover">
             <img class="qrcode" src="http://www.xiangjv.top/QQqrcode.png" alt="">
-            <img slot="reference" src="http://www.xiangjv.top/QQ.png" title="asd">
+            <img slot="reference" src="http://www.xiangjv.top/QQ.png">
           </el-popover>
-          <el-popover
+          <!-- <el-popover
             placement="bottom"
             width="250"
             trigger="hover">
-            <!-- <img src="http://www.xiangjv.top/email.png" alt=""> -->
             <span>https://github.com/liuguangqing</span>
-            <img   slot="reference" src="http://www.xiangjv.top/github.png" title="asd">
-          </el-popover>
-          <el-popover
+            <img   slot="reference" src="http://www.xiangjv.top/github.png">
+          </el-popover> -->
+          <a href="https://github.com/liuguangqing">
+            <img   slot="reference" src="http://www.xiangjv.top/github.png">
+          </a>
+          <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1090464974@qq.com">
+            <img   slot="reference" src="http://www.xiangjv.top/email.png">
+          </a>
+          <!-- <el-popover
             placement="bottom"
             width="200"
             trigger="hover">
-            <!-- <img src="http://www.xiangjv.top/email.png" alt=""> -->
             <span>http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=root@linhut.cn</span>
-            <img   slot="reference" src="http://www.xiangjv.top/email.png" title="asd">
-          </el-popover>
+            <img   slot="reference" src="http://www.xiangjv.top/email.png">
+          </el-popover> -->
         </div>
       </div>
     </div>

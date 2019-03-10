@@ -46,6 +46,8 @@ export default {
     // this.$axios.get('/proxy/getnav').then( res => {console.log(res)});
     console.log('getData>>>')
     console.log(this.getData)
+    // let loadingInstance1 = Loading.service({ fullscreen: true });
+    this.$loading({ fullscreen: true })
   }
 }
 </script>

@@ -25,10 +25,13 @@ export default {
     return {
       dataList: [],
       pageType: '',
-      params: {}
+      params: {},
+      load: ''
     }
   },
   mounted() {
+    this.load = this.$loading({ fullscreen: true })
+    console.log('{ fullscreen: true }')
     // this.pageType = this.geturl('type')
     if (this.pageType && this.pageType != '') {
       this.params.pageType = this.pageType
@@ -55,6 +58,8 @@ export default {
     },
     async getessayPage(params) {
       let data = await servers.getessayPage(params)
+      // this.$loading({ fullscreen: false })
+      this.load.close()
       this.dataList = data.data
       console.log('this.dataList', this.dataList)
       this.fenPage()
