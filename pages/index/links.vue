@@ -6,37 +6,23 @@
     <div class="mylinks">
       <div class="mylinkTitle">我的链接</div>
       <div class="mylinkCon">
-        <a href="http://www.baidu.com" v-for="(ite, ind) in friendList" :key="ind">
+        <a :href="ite.cont" v-for="(ite, ind) in friendList" :key="ind">
           <div class="mylinkItem">
             <img :src="ite.icon" alt>
             <div class>{{ite.title}}</div>
           </div>
         </a>
-
-        <!-- <div class="mylinkItem">
-          <img src="https://www.xuanmo.xin/wp-content/uploads/2016/03/favicon.png" alt>
-          <div class>清客居</div>
-        </div>
-        <div class="mylinkItem">
-          <img src="https://www.xuanmo.xin/wp-content/uploads/2018/05/Head.png" alt>
-          <div class>林小屋博客</div>
-        </div>
-        <div class="mylinkItem">
-          <img src="https://www.xuanmo.xin/wp-content/uploads/2018/06/avatar.jpeg" alt>
-          <div class>樱花博客</div>
-        </div>-->
       </div>
     </div>
   </section>
 </template>
 <script>
-import contleft from '~/components/contleft'
-
+// import contleft from '~/components/contleft'
 import servers from '../../plugins/axios'
 export default {
-  components: {
-    contleft
-  },
+  // components: {
+  //   contleft
+  // },
   data() {
     return {
       friendList: []

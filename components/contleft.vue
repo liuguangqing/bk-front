@@ -1,13 +1,13 @@
 <template>
     <div>
         <div class="asidetit">
-            <img src="../assets/images/user.png" alt="">
+            <img src="http://xiangjv.top/xiaoxin.png" alt="">
         </div>
         <div class="asidecon">
             <nuxt-link to="/home/-1">首页</nuxt-link>
-            <nuxt-link to="/msg">公告</nuxt-link>
+            <!-- <nuxt-link to="/msg">公告</nuxt-link> -->
             <nuxt-link to="/tag">标签云</nuxt-link>
-            <nuxt-link to="/tag">前端相关</nuxt-link>
+            <nuxt-link to="/frontAbout">前端相关</nuxt-link>
             <nuxt-link to="/links">友链</nuxt-link>
             <nuxt-link to="/self">博主相关</nuxt-link>
             <nuxt-link to="/about">关于</nuxt-link>

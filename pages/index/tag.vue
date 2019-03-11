@@ -4,42 +4,54 @@
       <h2>分类标签</h2>
     </header>
     <div class="classItem">
-      <el-tag>前端笔记(27)</el-tag>
-      <el-tag type="success">JavaScript(18)</el-tag>
-      <el-tag type="info">demo(14)</el-tag>
-      <el-tag type="warning">JavaScript(18)</el-tag>
-      <el-tag type="warning">demo(14)</el-tag>
-      <el-tag type="warning">tips(7)</el-tag>
-      <el-tag type="warning">css3(6)</el-tag>
-      <el-tag type="warning">Vue(6)</el-tag>
-      <el-tag type="warning">html(5)</el-tag>
-      <el-tag type="danger">bootstrap(3)</el-tag>
-      <el-tag type="danger">WordPress(3)</el-tag>
-      <el-tag type="danger">canvas(3)</el-tag>
-      <el-tag type="danger">SASS(3)</el-tag>
+      <nuxt-link v-for="(ite, ind) in navList" :to="'/home/' + ite.cont + '-1'" :key="ind">
+        <el-tag :type="ite.type">{{ite.title}}</el-tag>
+      </nuxt-link>
     </div>
   </section>
 </template>
 <script>
-import contleft from '~/components/contleft'
+import servers from '~/plugins/axios'
+// import contleft from '~/components/contleft'
 
 // import servers from '../plugins/axios'
 export default {
-  components: {
-    contleft
-  },
+  // components: {
+  //   // contleft
+  // },
   data() {
     return {
-      tagList: []
+      navList: []
     }
   },
   mounted() {
-    this.tagList
+    this.getnav()
   },
   methods: {
-    // async tagList() {
-    //   let data = await servers.
-    // } 
+    async getnav() {
+      let colorArr = ['','success', 'info', 'warning', 'danger']
+      let data = await servers.navData()
+      // console.log("nav", fn(data.data));
+      function fn(arrs) {
+        let arrtemp = []
+        rec(arrs)
+        function rec(arrs) {
+          if (arrs.length > 0) {
+            arrs.forEach(element => {
+              if (element.rank == 'yi' && element.data.length > 0) {
+                rec(element.data)
+              } else {
+                element.type = colorArr[parseInt(Math.random() * 5-1)]
+                arrtemp.push(element)
+              }
+            })
+          }
+        }
+        return arrtemp
+      }
+      this.navList = fn(data.data)
+      console.log(this.navList)
+    }
   }
 }
 </script>
@@ -59,19 +71,23 @@ export default {
     background-color: rgba(250, 250, 250, 0.9);
   }
 }
-.classify{
-  & >  h2{
+.classify {
+  & > h2 {
     text-align: left;
-    font-size: 30px ;
+    font-size: 30px;
     color: #555;
-    margin-bottom: 20px   
+    margin-bottom: 20px;
   }
 }
-.classItem{
-  padding: 20px ;
+.classItem {
+  padding: 20px;
   & > span {
-    margin-right: 10px ;
-    margin-bottom: 10px 
+    margin-right: 10px;
+    margin-bottom: 10px;
   }
+}
+a{
+  display: inline-block;
+  margin: 5px;
 }
 </style>

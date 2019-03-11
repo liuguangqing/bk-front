@@ -1,8 +1,7 @@
 <template>
   <div>
     <nuxt-link :to="'/indexDetail/' + sendIte.es_id">
-
-    <!-- <nuxt-link :to="{path: '/xiangjv/indexDetail',params:{dealNmae: sendIte.es_id}}"> -->
+      <!-- <nuxt-link :to="{path: '/xiangjv/indexDetail',params:{dealNmae: sendIte.es_id}}"> -->
       <ul class="bk_list">
         <li class="bk_item">
           <div class="img">
@@ -18,7 +17,7 @@
               <tag-crumbs :tags="sendIte.es_tags"/>
             </div>
             <div class="date">
-              <span>发布时间：{{sendIte.es_isTime}}</span>
+              <span>发布时间：{{formatDate(sendIte.es_isTime)}}</span>
               <span>查看：{{sendIte.es_view}}</span>
               <span>点赞：{{sendIte.es_good}}</span>
             </div>
@@ -30,6 +29,7 @@
 </template>
 <script>
 import tagCrumbs from '~/components/crumbs'
+import { formatDate } from '~/assets/js/base.js'
 export default {
   data() {
     return {}
@@ -41,7 +41,12 @@ export default {
     console.log('print')
     console.log(this.sendIte)
   },
-  props: ['sendIte']
+  props: ['sendIte'],
+  methods: {
+    formatDate(date, fmt) {
+      return formatDate(date, fmt)
+    }
+  }
 }
 </script>
 <style lang="less" scoped>
@@ -112,7 +117,7 @@ export default {
       .date {
         margin-bottom: 10px;
         font-size: 14px;
-        color: #E6A23C;
+        color: #e6a23c;
       }
     }
   }

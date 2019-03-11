@@ -90,6 +90,11 @@ export default {
   getessayDetial(params) {
     return postData(Api + '/getessayDetial', params)
   },
+
+  // 前端相关
+  getFrontAbout(params) {
+    return postData(Api + '/getFrontAbout', params)
+  },
   // 标签云
   // getTagsList(params) {
   //   return postData(Api + '/getTagsList', params)

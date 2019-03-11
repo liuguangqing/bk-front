@@ -1,23 +1,17 @@
 <template>
-  <section>
+  <section :class="[{'right_all':fixedar}]">
     <div class="cont_top">
       <div class="right_title">
         <h2>欢迎交流</h2>
       </div>
       <div class="right_cont linkmy">
         <div>
-          <el-popover
-            placement="bottom"
-            width="200"
-            trigger="hover">
-            <img class="qrcode" src="http://www.xiangjv.top/weixinqrcode.png" alt="">
+          <el-popover placement="bottom" width="200" trigger="hover">
+            <img class="qrcode" src="http://www.xiangjv.top/weixinqrcode.png" alt>
             <img slot="reference" src="http://www.xiangjv.top/weixin.png">
-          </el-popover>  
-          <el-popover
-            placement="bottom"
-            width="200"
-            trigger="hover">
-            <img class="qrcode" src="http://www.xiangjv.top/QQqrcode.png" alt="">
+          </el-popover>
+          <el-popover placement="bottom" width="200" trigger="hover">
+            <img class="qrcode" src="http://www.xiangjv.top/QQqrcode.png" alt>
             <img slot="reference" src="http://www.xiangjv.top/QQ.png">
           </el-popover>
           <!-- <el-popover
@@ -26,12 +20,12 @@
             trigger="hover">
             <span>https://github.com/liuguangqing</span>
             <img   slot="reference" src="http://www.xiangjv.top/github.png">
-          </el-popover> -->
+          </el-popover>-->
           <a href="https://github.com/liuguangqing">
-            <img   slot="reference" src="http://www.xiangjv.top/github.png">
+            <img slot="reference" src="http://www.xiangjv.top/github.png">
           </a>
           <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1090464974@qq.com">
-            <img   slot="reference" src="http://www.xiangjv.top/email.png">
+            <img slot="reference" src="http://www.xiangjv.top/email.png">
           </a>
           <!-- <el-popover
             placement="bottom"
@@ -39,7 +33,7 @@
             trigger="hover">
             <span>http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=root@linhut.cn</span>
             <img   slot="reference" src="http://www.xiangjv.top/email.png">
-          </el-popover> -->
+          </el-popover>-->
         </div>
       </div>
     </div>
@@ -52,7 +46,7 @@
           <div class="rev_item" v-for="(ite0, ind0) in essayList" :key="ind0">
             <h2 class="title">{{ite0.es_title}}</h2>
             <div class="text">{{ite0.es_tags}}</div>
-            <div class="pick">时间 ： {{ite0.es_isTime}}</div>
+            <div class="pick">时间 ： {{formatDatea(ite0.es_isTime)}}</div>
           </div>
         </div>
       </div>
@@ -65,20 +59,8 @@
         <div class="classItem">
           <!-- <nuxt-link v-for="ite in navList" :to="'/?type=' + ite.cont + '&pageNo=1'" :key="ite"> -->
           <nuxt-link v-for="(ite, ind) in navList" :to="'/home/' + ite.cont + '-1'" :key="ind">
-            <el-tag>{{ite.title}}</el-tag>
+            <el-tag :type="ite.type">{{ite.title}}</el-tag>
           </nuxt-link>
-          <!-- <el-tag type="success">JavaScript(18)</el-tag>
-          <el-tag type="info">demo(14)</el-tag>
-          <el-tag type="warning">JavaScript(18)</el-tag>
-          <el-tag type="warning">demo(14)</el-tag>
-          <el-tag type="warning">tips(7)</el-tag>
-          <el-tag type="warning">css3(6)</el-tag>
-          <el-tag type="warning">Vue(6)</el-tag>
-          <el-tag type="warning">html(5)</el-tag>
-          <el-tag type="danger">bootstrap(3)</el-tag>
-          <el-tag type="danger">WordPress(3)</el-tag>
-          <el-tag type="danger">canvas(3)</el-tag>
-          <el-tag type="danger">SASS(3)</el-tag>--> 
         </div>
       </div>
     </div>
@@ -86,29 +68,48 @@
 </template>
 <script>
 import servers from '../plugins/axios'
+import { formatDate } from '../assets/js/base.js'
 
 export default {
   data() {
     return {
       navList: [],
-      essayList: []
+      essayList: [],
+      fixedar: false
     }
   },
   components: {},
   mounted() {
     this.getnav()
     this.getessay()
+    this.scrollLIst()
   },
   methods: {
-    async getessay(){
+    scrollLIst(){
+      let _this = this
+      let scrollright = document.getElementsByClassName('conttall')[0]
+      scrollright.addEventListener('scroll', function(){
+        console.log(scrollright.scrollTop)
+        if(scrollright.scrollTop >= 100){
+          _this.fixedar = true
+        }else {
+          _this.fixedar = false
+        }
+      })
+    },
+    formatDatea(dats,fmt){
+      return formatDate(dats)
+    },
+    async getessay() {
       let parmasTemp = {
-        pageNow:1,
-        pageSize:3
+        pageNow: 1,
+        pageSize: 3
       }
       let m = await servers.getessayPage(parmasTemp)
       this.essayList = m.data
     },
     async getnav() {
+      let colorArr = ['','success', 'info', 'warning', 'danger']
       let data = await servers.navData()
       // console.log("nav", fn(data.data));
       function fn(arrs) {
@@ -120,6 +121,7 @@ export default {
               if (element.rank == 'yi' && element.data.length > 0) {
                 rec(element.data)
               } else {
+                element.type = colorArr[parseInt(Math.random() * 5-1)]
                 arrtemp.push(element)
               }
             })
@@ -134,9 +136,13 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-a{
+.right_all{
+  position: fixed;
+  width: 240px;
+}
+a {
   display: inline-block;
-  padding: 0 5px 10px 0
+  padding: 0 5px 10px 0;
 }
 .el-col .grid-content {
   background-color: transparent;
@@ -175,16 +181,16 @@ section > div {
     color: #777;
     padding: 10px 6px 6px;
   }
-  .linkmy{
+  .linkmy {
     text-align: center;
-    img{
+    img {
       width: 30px;
       &::after {
         content: '';
         display: inline-block;
         background-color: #000;
         width: 1px;
-        height: 2px
+        height: 2px;
       }
     }
   }

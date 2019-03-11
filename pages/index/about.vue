@@ -1,20 +1,20 @@
 <template>
   <section class="container">
-   about 页面
+   博主很懒，该页面还没有文章。。。
   </section>
 </template>
 <script>
-import contleft from '~/components/contleft'
+// import contleft from '~/components/contleft'
 export default {
-  components:{
-    contleft
-  }
+  // components:{
+    // contleft
+  // }
 }
 </script>
 <style scoped lang="less">
 .container{
-  padding: 10px  120px  0;
-  height: 900px !important;
+  padding: 10px  20px  0;
+  height: 700px !important;
 }
 .contcent {
   margin: auto ; 
