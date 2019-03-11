@@ -1,8 +1,7 @@
 <template>
   <section class="container">
     <div>
-      <div>个人简介</div>
-      <hr>
+      <div class="mylinkTitle">个人简介</div>
       <div>
         <span>网名：</span>
         <span>幻雨焉缘</span>
@@ -15,18 +14,10 @@
         <span>职业：</span>
         <span>WEB前端开发攻城狮</span>
       </div>
-      <div>
-        <span>出生：</span>
-        <span>1994年04月</span>
-      </div>
-      <div>
-        <span>出生：</span>
-        <span>1994年04月</span>
-      </div>
     </div>
     <div>
-      <div>博客经历</div>
-      <hr>
+      <div class="mylinkTitle">博客经历</div>
+      <!-- <hr> -->
       <div>
         <p>201902月15日正式上线 框架 nuxt + vue-element-admin + nodeJs-express + sql</p>
         <p>本站源码，https://github.com/liuguangqing/bkfront</p>
@@ -34,22 +25,22 @@
       </div>
     </div>
     <div>
-      <div>专业技能</div>
-      <hr>
+      <div class="mylinkTitle">专业技能</div>
+      <!-- <hr> -->
       <div>
         <p>熟悉使用sqlmap,xss和Kali系统.</p>
       </div>
     </div>
     <div>
-      <div>信仰编程</div>
-      <hr>
+      <div class="mylinkTitle">信仰编程</div>
+      <!-- <hr> -->
       <div>
         <p>优美胜于丑陋 (menVscode)</p>
       </div>
     </div>
     <div>
-      <div>微语</div>
-      <hr>
+      <div class="mylinkTitle">微语</div>
+      <!-- <hr> -->
       <div>
         <p>人需要去拼搏，拼搏会让你更加精彩.</p>
       </div>
@@ -65,8 +56,17 @@ export default {
 }
 </script>
 <style scoped lang="less">
+  .mylinkTitle {
+    line-height: 30px;
+    // border-radius: 10px;
+    border-left: 5px solid #06aaff;
+    background: #f0f2f7;
+    padding: 0 10px;
+    margin: 20px 0 10px 0;
+    color: #777;
+  }
 .container{
-  padding: 10px  120px  0;
+  padding: 10px  20px  0;
   height: 900px !important;
 }
 .contcent {

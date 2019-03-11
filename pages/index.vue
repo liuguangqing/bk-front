@@ -94,7 +94,7 @@ export default {
   }
 }
 .el-row {
-  & > .el-col:nth-last-of-type(1) {
+  & > .el-col:nth-last-of-type(1) ,& > .el-col:nth-of-type(1)  {
     .grid-content {
       padding-top: 0;
       background-color: transparent;

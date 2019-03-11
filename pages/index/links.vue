@@ -6,7 +6,7 @@
     <div class="mylinks">
       <div class="mylinkTitle">我的链接</div>
       <div class="mylinkCon">
-        <a :href="ite.cont" v-for="(ite, ind) in friendList" :key="ind">
+        <a  :href="'http://'+ite.cont" v-for="(ite, ind) in friendList" :key="ind">
           <div class="mylinkItem">
             <img :src="ite.icon" alt>
             <div class>{{ite.title}}</div>

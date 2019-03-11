@@ -1,6 +1,6 @@
 <template>
   <section :class="[{'right_all':fixedar}]">
-    <div class="cont_top">
+    <div class="cont_top" v-show="!fixedar">
       <div class="right_title">
         <h2>欢迎交流</h2>
       </div>
@@ -89,8 +89,7 @@ export default {
       let _this = this
       let scrollright = document.getElementsByClassName('conttall')[0]
       scrollright.addEventListener('scroll', function(){
-        console.log(scrollright.scrollTop)
-        if(scrollright.scrollTop >= 100){
+        if(scrollright.scrollTop >= 120){
           _this.fixedar = true
         }else {
           _this.fixedar = false
