@@ -96,7 +96,7 @@ export default {
   }
 }
 </script>
-<style scoped lang="less">
+<style scoped>
 .container {
   padding: 10px 10px 0;
   min-height: 900px !important;
@@ -135,13 +135,17 @@ main {
 }
 .tagList{
   margin-top: 4px;
-  a {
+}
+.tagList a {
     display: inline-block;
     margin-right: 10px ; 
     padding: 2px 6px; 
     background-color: skyblue;
     border-radius: 4px;
     color: #fff;
-  }
+}
+pre::-webkit-scrollbar-thumb >>> {
+    background-color: #eebc8e;
+    border-radius: 10px;
 }
 </style>

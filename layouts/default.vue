@@ -30,17 +30,20 @@ export default {
 }
 .conttall {
   padding-top: 60px;
-  background: url(../assets/images/bkbg.jpeg) repeat center top / 100%;
-  background-attachment: fixed;
+  // background: url(../assets/images/bkbg.jpeg) repeat center top / 100%;
+  // background: url(../assets/images/bkbg.jpeg) repeat center top / 100%;
+  // background-attachment: fixed;
+  background-color: #e9eaed;
   height: 100%;
   box-sizing: border-box;
   overflow-y: scroll;
 }
 /*定义滚动条轨道*/
 .conttall::-webkit-scrollbar-track {
-    background-color: #F5F5F5;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.22);
+    background-color: transparent;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.42);
 }
+
 /*定义滚动条*/
 .conttall::-webkit-scrollbar-thumb {
     background-color: #eebc8e;
@@ -48,8 +51,8 @@ export default {
 }
 /*定义滚动条高宽及背景*/
 .conttall::-webkit-scrollbar {
-    background-color: #F5F5F5;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.22);
+    background-color: transparent;
+    // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.22);
     width: 10px;
 }
 .loading_box {
