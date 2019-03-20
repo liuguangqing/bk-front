@@ -2,7 +2,9 @@
   <section class="headerBox">
     <div class="headercontall">
       <div class="header">
-        <span>XiangJu</span>
+        <a href="/home/-1">
+          <h1>XiangJv</h1>
+        </a>
       </div>
       <el-menu
         :default-active="activeIndex2"
@@ -118,7 +120,7 @@ export default {
     z-index: 9;
     width: 160px;
     text-align: center;
-    span {
+    a {
       line-height: 60px;
       font-size: 30px;
       font-family: -webkit-pictograph;

@@ -28,10 +28,8 @@
 // import api from '~/utils/request.js'
 // inter.userLogin()
 export default {
-  // components: {
-  //   contleft,
-  //   contright
-  // },
+  components: {
+  },
   data() {
     return {
       getData: {}
@@ -68,4 +66,5 @@ export default {
     border-radius: 10px;
   }
 }
+
 </style>

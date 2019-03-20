@@ -71,9 +71,9 @@ export default {
     return postData(Api + '/getUserInfo')
   },
   // 插入数据 
-  insertData() {
-    return postData(Api + '/addUserMsg')
-  },
+  // insertData() {
+  //   return postData(Api + '/addUserMsg')
+  // },
   // 友情链接 
   getfriend() {
     return postData(Api + '/getfriend')

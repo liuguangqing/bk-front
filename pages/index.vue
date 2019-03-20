@@ -21,6 +21,7 @@
         </el-row>
       </div>
     </div>
+    <bgcon class="bgcon"/>
     <footercom/>
   </section>
 </template>
@@ -29,6 +30,7 @@ import showcon from '~/pages/main'
 import contleft from '~/components/contleft'
 import contright from '~/components/contright'
 import footercom from '~/components/footcom'
+import bgcon from '~/components/bgcon'
 
 import servers from '../plugins/axios'
 
@@ -42,7 +44,8 @@ export default {
     showcon,
     contleft,
     contright,
-    footercom
+    footercom,
+    bgcon
   },
   mounted() {
     // console.log(this.getData)
@@ -64,10 +67,10 @@ export default {
       let data = await servers.userInfoData()
       // console.log(data)
     },
-    async getinsertData() {
-      let data = await servers.insertData()
-      // console.log(data)
-    }
+    // async getinsertData() {
+    //   let data = await servers.insertData()
+    //   // console.log(data)
+    // }
   },
   mounted(){
         // let loadingInstance1 = Loading.service({ fullscreen: true });
@@ -100,5 +103,15 @@ export default {
       background-color: transparent;
     }
   }
+}
+.bgcon{
+    width: 500px;
+    height: 500px;
+    background-color: transparent;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
+
 }
 </style>

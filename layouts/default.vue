@@ -11,12 +11,13 @@
 </template>
 <script>
 import headecom from '~/components/headcom'
+
 export default {
   data() {
     return {}
   },
   components: {
-    headecom
+    headecom,
   },
   mounted() {
   }
@@ -33,7 +34,8 @@ export default {
   // background: url(../assets/images/bkbg.jpeg) repeat center top / 100%;
   // background: url(../assets/images/bkbg.jpeg) repeat center top / 100%;
   // background-attachment: fixed;
-  background-color: #e9eaed;
+  // background-color: #e9eaed;
+  background-color: rgba(155, 155, 155, .6);
   height: 100%;
   box-sizing: border-box;
   overflow-y: scroll;
@@ -70,4 +72,5 @@ export default {
     transform: translate(-50% , -50%)
   }
 }
+
 </style>
