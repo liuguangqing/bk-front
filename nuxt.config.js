@@ -25,9 +25,13 @@ module.exports = {
       type: 'image/x-icon',
       href: '/favicon.ico'
     }],
-    script:[{
-      src: '/js/share.js'
-    }]
+    script:[
+      {
+        src: '/js/share.js'
+      },{
+        src: '/js/changyan.js'
+      }
+    ]
   },
 
   /*

@@ -36,7 +36,8 @@ export default {
       this.params.pageType = this.pageType
     }
     // this.params.pageNow = this.geturl('pageNo')
-    this.params.pageSize = 3
+    // 加载文章数量
+    this.params.pageSize = 5
     this.getessayPage(this.params)
   },
   methods: {
@@ -57,7 +58,6 @@ export default {
     },
     async getessayPage(params) {
       let data = await servers.getessayPage(params)
-      // this.$loading({ fullscreen: false })
       this.load.close()
       this.dataList = data.data
       console.log('this.dataList', this.dataList)
@@ -68,7 +68,7 @@ export default {
       if (tmepUrl.indexOf('pageNo') >= 0) {
         tmepUrl = '/xiangjv:type='+this.geturl('type')+'&pageNo='
       }
-      const slp = new SimplePagination(50)
+      const slp = new SimplePagination(10)
       slp.init({
         container: '.paging_child',
         btnDom: 'a',

@@ -43,19 +43,21 @@ export default {
 /*定义滚动条轨道*/
 .conttall::-webkit-scrollbar-track {
     background-color: transparent;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.42);
+    // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.42);
+    -webkit-box-shadow: transparent;
 }
 
 /*定义滚动条*/
 .conttall::-webkit-scrollbar-thumb {
-    background-color: #eebc8e;
+    background-color: #bbb;
     border-radius: 10px;
 }
 /*定义滚动条高宽及背景*/
 .conttall::-webkit-scrollbar {
     background-color: transparent;
     // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.22);
-    width: 10px;
+    width: 5px;
+    height:5px;
 }
 .loading_box {
   width: 100%;

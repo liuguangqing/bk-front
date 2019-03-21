@@ -56,7 +56,7 @@ export default {
         this.params.pageType = this.pageType
       }
       this.params.pageNow = this.geturl('pageNo')
-      this.params.pageSize = 3
+      this.params.pageSize = 5
       console.log('this.params', this.params)
       // console.log('params', params)
 

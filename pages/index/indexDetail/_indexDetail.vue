@@ -9,33 +9,30 @@
         <div class="essayContent" v-html="essayDetail.es_content"></div>
       </div>
       <div class="tagList">
-        <span>所属标签：</span>
-        <a href="" v-for="(ite,ind) in essayDetail.es_tagList" :key="ind">{{ite}}</a>
+        <span>标签：</span>
+        <i v-for="(ite,ind) in essayDetail.es_tagList" :key="ind">{{ite}}</i>
       </div>
-      <!-- <div class="shareBox">
-        <div class="sharetitle">分享内容到：</div>
-        <div class="bdsharebuttonbox">
-          <a href="#" class="bds_more" data-cmd="more"></a>
-          <a href="#" class="bds_qzone" data-cmd="qzone"></a>
-          <a href="#" class="bds_tsina" data-cmd="tsina"></a>
-          <a href="#" class="bds_tqq" data-cmd="tqq"></a>
-          <a href="#" class="bds_renren" data-cmd="renren"></a>
-          <a href="#" class="bds_weixin" data-cmd="weixin"></a>
-        </div>
+      <!-- <div class="pas">
+        <span>关键词:</span>
+        <i v-for="(ite,ind) in essayDetail.es_pasList" :key="ind">{{ite}}</i>
       </div> -->
     </main>
     <div>
+      <!-- 安装畅言 -->
+      <!-- <div id="SOHUCS" :sid="essayId"></div> -->
+      <changyan  :sendEssayId="essayId"/> 
       <!-- <el-rate v-model="value5" disabled show-score text-color="#ff9900" score-template="{value}"></el-rate> -->
       <!-- <div class="block">
         <el-rate v-model="value2" :colors="['#99A9BF', '#F7BA2A', '#FF9900']"></el-rate>
       </div> -->
     </div>
-    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+    <!-- <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div> -->
     <!-- <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script> -->
   </section>
 </template>
 <script>
-import contleft from '~/components/contleft'
+// import contleft from '~/components/contleft'
+import changyan from '~/components/changyan'
 import servers from '~/plugins/axios'
 import { formatDate } from '~/assets/js/base.js'
 export default {
@@ -66,7 +63,7 @@ export default {
     }
   },
   components: {
-    contleft
+    changyan
   },
   mounted() {
     this.load = this.$loading({ fullscreen: true })
@@ -90,6 +87,7 @@ export default {
       this.load.close()
       data.data.es_content = data.data.es_content.replace(/!!&!!/g, /'/)
       data.data.es_tagList = data.data.es_tags.split(',')
+      data.data.es_pasList = data.data.es_keywords.split(',')
       this.essayDetail = data.data
       console.log('essayDetail',this.essayDetail)
     }
@@ -119,6 +117,8 @@ header {
 header > h2 {
   font-size: 36px;
   color: #555;
+  font-weight: 600;
+  margin-bottom: 25px;
 }
 header > div {
   padding: 10px 0;
@@ -134,12 +134,13 @@ main {
   margin-top: 2px;
 }
 .tagList{
-  margin-top: 4px;
+  margin-top: 20px;
 }
-.tagList a {
+.tagList i,.pas i {
     display: inline-block;
     margin-right: 10px ; 
-    padding: 2px 6px; 
+    padding: 0px 6px; 
+    font-size: 13px;
     background-color: skyblue;
     border-radius: 4px;
     color: #fff;
