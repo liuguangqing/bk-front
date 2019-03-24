@@ -19,8 +19,8 @@
     </main>
     <div>
       <!-- 安装畅言 -->
-      <!-- <div id="SOHUCS" :sid="essayId"></div> -->
-      <changyan  :sendEssayId="essayId"/> 
+      <!-- <div id="SOHUCS" :sid="essayDetail.es_id"></div> -->
+      <changyan  :sendEssayId="essayDetail.es_id"/> 
       <!-- <el-rate v-model="value5" disabled show-score text-color="#ff9900" score-template="{value}"></el-rate> -->
       <!-- <div class="block">
         <el-rate v-model="value2" :colors="['#99A9BF', '#F7BA2A', '#FF9900']"></el-rate>

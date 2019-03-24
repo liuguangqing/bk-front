@@ -3,10 +3,10 @@
     <index-list v-for="(ite,ind) in dataList" :key="ind" :sendIte="ite"/>
     <div class="paging">
       <div class="paging_child"></div>
-      <form action id="page-go">
+      <!-- <form action id="page-go">
         <input type="text" id="page-num">
         <input type="submit" id="goto" value="Go">
-      </form>
+      </form> -->
     </div>
   </section>
 </template>
@@ -52,6 +52,7 @@ export default {
     },
     async getessayPage(params) {
       this.pageType = this.geturl('type')
+      console.log(this.pageType)
       if (this.pageType && this.pageType != '') {
         this.params.pageType = this.pageType
       }
@@ -63,15 +64,20 @@ export default {
       let data = await servers.getessayPage(this.params)
       this.dataList = data.data
       console.log('this.dataList', this.dataList)
-      this.fenPage()
+      let res  = await servers.getessayPage({pageType:this.params.pageType})
+      console.log('resresresresresres', res)
+      let ceiling = Math.ceil(res.data.length / this.params.pageSize)
+      this.fenPage(ceiling)
     },
-    fenPage() {
+    fenPage(alllist) {
+      console.log('alllist', alllist)
       let tmepUrl = location.href
       if (this.geturl('pageNo')) {
-        tmepUrl = '/home/'+this.geturl('type')+'-'
+        tmepUrl = '/bk_front/home/'+this.geturl('type')+'-'
       }
       console.log('tmepUrltmepUrltmepUrltmepUrltmepUrl',tmepUrl)
-      const slp = new SimplePagination(50)
+
+      const slp = new SimplePagination(alllist)
       slp.init({
         container: '.paging_child',
         btnDom: 'a',

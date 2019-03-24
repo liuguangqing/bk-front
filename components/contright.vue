@@ -44,9 +44,12 @@
       <div class="right_cont">
         <div class="rev_list">
           <div class="rev_item" v-for="(ite0, ind0) in essayList" :key="ind0">
-            <h2 class="title">{{ite0.es_title}}</h2>
-            <div class="text">{{ite0.es_tags}}</div>
-            <div class="pick">时间 ： {{formatDatea(ite0.es_isTime)}}</div>
+            <nuxt-link
+            :to="'/bk_front/indexDetail/' + ite0.es_id">
+              <h2 class="title">{{ite0.es_title}}</h2>
+              <div class="text">{{ite0.es_tags}}</div>
+              <div class="pick">时间 ： {{formatDatea(ite0.es_isTime)}}</div>
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -58,7 +61,7 @@
       <div class="right_cont">
         <div class="classItem">
           <!-- <nuxt-link v-for="ite in navList" :to="'/?type=' + ite.cont + '&pageNo=1'" :key="ite"> -->
-          <nuxt-link v-for="(ite, ind) in navList" :to="'/home/' + ite.cont + '-1'" :key="ind">
+          <nuxt-link v-for="(ite, ind) in navList" :to="'/bk_front/home/' + ite.cont + '-1'" :key="ind">
             <el-tag :type="ite.type">{{ite.title}}</el-tag>
           </nuxt-link>
         </div>
