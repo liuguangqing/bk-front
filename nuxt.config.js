@@ -113,6 +113,9 @@ module.exports = {
       test: /\.less$/,
       use: ['style-loader', 'css-loader', 'less-loader']
     }]
+  },
+  router: {
+    mode: 'hash'
   }
   // generate: {
   //   routes: function () {
