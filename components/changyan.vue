@@ -1,7 +1,7 @@
 <template>
   <section>
     <div>
-      <div id="SOHUCS" :sid="essayId"></div>
+      <div id="SOHUCS" :sid="sendEssayId"></div>
     </div>
   </section>
 </template>

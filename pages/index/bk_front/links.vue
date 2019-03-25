@@ -18,7 +18,7 @@
 </template>
 <script>
 // import contleft from '~/components/contleft'
-import servers from '../../plugins/axios'
+import servers from '~/plugins/axios'
 export default {
   // components: {
   //   contleft
