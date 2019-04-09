@@ -28,9 +28,10 @@ module.exports = {
     script:[
       {
         src: '/js/share.js'
-      },{
-        src: '/js/changyan.js'
       }
+      // ,{
+      //   src: '/js/changyan.js'
+      // }
     ]
   },
 
@@ -115,7 +116,7 @@ module.exports = {
     }]
   },
   router: {
-    mode: 'hash'
+    // mode: 'hash'
   }
   // generate: {
   //   routes: function () {

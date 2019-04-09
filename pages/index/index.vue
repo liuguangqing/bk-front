@@ -45,9 +45,11 @@ export default {
     geturl(getParam) {
       let paramsTemp = this.$route.params.home + ''
       if(getParam == 'type'){
-        return paramsTemp.split('-')[0]
+        // return paramsTemp.split('-')[0]
+        return 'all'
       }else if(getParam == 'pageNo'){
-        return paramsTemp.split('-')[1]
+        // return paramsTemp.split('-')[1]
+        return 1
       }
     },
     async getessayPage(params) {
@@ -77,7 +79,7 @@ export default {
       }
       console.log('tmepUrltmepUrltmepUrltmepUrltmepUrl',tmepUrl)
 
-      var slp = new SimplePagination(alllist)
+      const slp = new SimplePagination(alllist)
       slp.init({
         container: '.paging_child',
         btnDom: 'a',
@@ -86,7 +88,6 @@ export default {
         maxShowBtnCount: 3,
         onPageChange: state => {
           console.log('pagination change New :', state.pageNumber)
-          // location.href = '/bk_front/home/' + this.geturl('type') + '-' + state.pageNumber
           // params.pageNow = state.pageNumber
           // params.pageSize = 3
           // this.getessayPage(params)
@@ -94,17 +95,15 @@ export default {
       })
       // 定位当前页
       if (this.geturl('pageNo')) {
-        console.log('定位到当前页')
         slp.gotoPage(this.geturl('pageNo') * 1)
       }
-      // try {
-      //   document.getElementById('page-go').addEventListener('submit', e => {
-      //     e.preventDefault()
-      //     console.log('123132')
-      //     slp.gotoPage(+document.getElementById('page-num').value)
-      //   })
-      // } catch (error) {
-      // }
+      try {
+        document.getElementById('page-go').addEventListener('submit', e => {
+          e.preventDefault()
+          slp.gotoPage(+document.getElementById('page-num').value)
+        })
+      } catch (error) {
+      }
     }
   }
 }

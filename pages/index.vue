@@ -21,7 +21,7 @@
         </el-row>
       </div>
     </div>
-    <bgcon class="bgcon"/>
+    <!-- <bgcon class="bgcon"/> -->
     <footercom/>
   </section>
 </template>
@@ -30,7 +30,7 @@ import showcon from '~/pages/main'
 import contleft from '~/components/contleft'
 import contright from '~/components/contright'
 import footercom from '~/components/footcom'
-import bgcon from '~/components/bgcon'
+// import bgcon from '~/components/bgcon'
 
 import servers from '../plugins/axios'
 
@@ -45,7 +45,7 @@ export default {
     contleft,
     contright,
     footercom,
-    bgcon
+    // bgcon
   },
   mounted() {
     // console.log(this.getData)

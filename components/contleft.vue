@@ -34,7 +34,6 @@
       let _this = this
       let scrollright = document.getElementsByClassName('conttall')[0]
       scrollright.addEventListener('scroll', function(){
-        console.log(scrollright.scrollTop)
         if(scrollright.scrollTop >= 120){
           _this.fixedar = true
         }else {

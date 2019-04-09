@@ -210,9 +210,13 @@ export class SimplePagination {
       btnDom,
       routerhead
     } = state
+    // 上一页 && 下一页
+    // <${btnDom} class="${pCName} ${prevCName} ${disbalePrevCName}">上一页</${btnDom}>
+    // <${btnDom} class="${pCName} ${nextCName}${
+    //   totalPageCount === 1 ? ' ' + disbaleNextCName : ''
+    // }">下一页</${btnDom}>
     let paginationStr = `
     <ul class="pagination">
-    <${btnDom} class="${pCName} ${prevCName} ${disbalePrevCName}">上一页</${btnDom}>
     <${btnDom} class="${pCName} ${pageNumberCName} ${activeCName}" ${dataNumberAttr}='${routerhead}1'>1</${btnDom}>
     `
     if (totalPageCount - 2 > maxShowBtnCount) {
@@ -232,9 +236,7 @@ export class SimplePagination {
         paginationStr += `<${btnDom} class="${pCName} ${pageNumberCName}" ${dataNumberAttr}='${routerhead}${i}'>${i}</${btnDom}>`
       }
     }
-    paginationStr += `<${btnDom} class="${pCName} ${nextCName}${
-      totalPageCount === 1 ? ' ' + disbaleNextCName : ''
-    }">下一页</${btnDom}></ul>`
+    paginationStr += `</ul>`
     pageContainer.innerHTML = paginationStr
     // 切换页码
     this.switchPage()

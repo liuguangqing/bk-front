@@ -105,7 +105,8 @@ export default {
     async getessay() {
       let parmasTemp = {
         pageNow: 1,
-        pageSize: 3
+        pageSize: 4,
+        pageType: 'all'
       }
       let m = await servers.getessayPage(parmasTemp)
       this.essayList = m.data
@@ -144,7 +145,7 @@ export default {
 }
 a {
   display: inline-block;
-  padding: 0 5px 10px 0;
+  // padding: 0 5px 10px 0;
 }
 .el-col .grid-content {
   background-color: transparent;
@@ -200,16 +201,17 @@ section > div {
     margin-bottom: 8px;
     padding: 8px;
     // border-bottom: 1px solid #e9eaed;
+    border-radius: 2px;
     background-color: #e9eaed;
     .title {
-      font-size: 18px;
+      font-size: 15px;
       color: #555;
       padding-bottom: 8px;
     }
     .text {
-      font-size: 14px;
+      font-size: 12px;
       color: #777;
-      padding-bottom: 4px;
+      padding-bottom: 15px;
     }
     .pick {
       font-size: 14px;

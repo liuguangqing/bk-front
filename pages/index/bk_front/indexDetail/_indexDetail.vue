@@ -15,16 +15,16 @@
       <!-- <div class="pas">
         <span>关键词:</span>
         <i v-for="(ite,ind) in essayDetail.es_pasList" :key="ind">{{ite}}</i>
-      </div> -->
+      </div>-->
     </main>
     <div>
       <!-- 安装畅言 -->
       <!-- <div id="SOHUCS" :sid="essayDetail.es_id"></div> -->
-      <changyan  :sendEssayId="essayDetail.es_id"/> 
+      <changyan :sendEssayId="essayDetail.es_id"/>
       <!-- <el-rate v-model="value5" disabled show-score text-color="#ff9900" score-template="{value}"></el-rate> -->
       <!-- <div class="block">
         <el-rate v-model="value2" :colors="['#99A9BF', '#F7BA2A', '#FF9900']"></el-rate>
-      </div> -->
+      </div>-->
     </div>
     <!-- <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div> -->
     <!-- <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script> -->
@@ -51,6 +51,9 @@ export default {
           content: this.essayDetail.es_keywords
         }
       ]
+      // script: [
+      //   {src: '~/plugins/changyan.js'}
+      // ]
     }
   },
   data() {
@@ -72,6 +75,81 @@ export default {
     this.getGoodsDetil(this.essayId)
     // var block = document.getElementById('some-code')
     // Prism.highlightElement(block);
+    //
+    // if (window.changyan !== undefined || window.cyan !== undefined) {
+    //   return;
+    // }
+    var createNs = function() {
+      // if (window.changyan !== undefined) {
+      //   return;
+      // } else {
+      window.changyan = {}
+      window.changyan.api = {}
+      window.changyan.api.config = function(conf) {
+        window.changyan.api.tmpIsvPageConfig = conf
+      }
+      window.changyan.api.ready = function(fn) {
+        window.changyan.api.tmpHandles = window.changyan.api.tmpHandles || []
+        window.changyan.api.tmpHandles.push(fn)
+      }
+      window.changyan.ready = function(fn) {
+        if (window.changyan.rendered) {
+          fn && fn()
+        } else {
+          window.changyan.tmpHandles = window.changyan.tmpHandles || []
+          window.changyan.tmpHandles.push(fn)
+        }
+      }
+      // }
+    }
+
+    var createMobileNs = function() {
+      if (window.cyan) {
+        return
+      }
+      window.cyan = {}
+      window.cyan.api = {}
+      window.cyan.api.ready = function(fn) {
+        window.cyan.api.tmpHandles = window.cyan.api.tmpHandles || []
+        window.cyan.api.tmpHandles.push(fn)
+      }
+    }
+    var loadVersionJs = function() {
+      var loadJs = function(src, fun) {
+        var head =
+          document.getElementsByTagName('head')[0] ||
+          document.head ||
+          document.documentElement
+
+        var script = document.createElement('script')
+        script.setAttribute('type', 'text/javascript')
+        script.setAttribute('charset', 'UTF-8')
+        script.setAttribute('src', src)
+
+        if (typeof fun === 'function') {
+          if (window.attachEvent) {
+            script.onreadystatechange = function() {
+              var r = script.readyState
+              if (r === 'loaded' || r === 'complete') {
+                script.onreadystatechange = null
+                fun()
+              }
+            }
+          } else {
+            script.onload = fun
+          }
+        }
+
+        head.appendChild(script)
+      }
+
+      var ver = +new Date() + window.Math.random().toFixed(16)
+      var url = 'https://changyan.itc.cn/upload/version-v3.js?' + ver
+      loadJs(url)
+    }
+    createNs()
+    createMobileNs()
+    loadVersionJs()
     setTimeout(() => {
       // Vue.use(VuePrism , {pscss})
       Prism.highlightAll()
@@ -85,11 +163,11 @@ export default {
       let params = { essayId: this.essayId }
       let data = await servers.getessayDetial(params)
       this.load.close()
-      data.data.es_content = data.data.es_content.replace(/!!&!!/g, /'/)
+      data.data.es_content = data.data.es_content.replace(/!!&!!/g, "'")
       data.data.es_tagList = data.data.es_tags.split(',')
       data.data.es_pasList = data.data.es_keywords.split(',')
       this.essayDetail = data.data
-      console.log('essayDetail',this.essayDetail)
+      console.log('essayDetail', this.essayDetail)
     }
   }
 }
@@ -133,20 +211,21 @@ main {
   float: left;
   margin-top: 2px;
 }
-.tagList{
+.tagList {
   margin-top: 20px;
 }
-.tagList i,.pas i {
-    display: inline-block;
-    margin-right: 10px ; 
-    padding: 0px 6px; 
-    font-size: 13px;
-    background-color: skyblue;
-    border-radius: 4px;
-    color: #fff;
+.tagList i,
+.pas i {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 0px 6px;
+  font-size: 13px;
+  background-color: skyblue;
+  border-radius: 4px;
+  color: #fff;
 }
 pre::-webkit-scrollbar-thumb >>> {
-    background-color: #eebc8e;
-    border-radius: 10px;
+  background-color: #eebc8e;
+  border-radius: 10px;
 }
 </style>

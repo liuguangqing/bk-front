@@ -4,9 +4,9 @@
     //   return;
     // }
     var createNs = function() {
-      if (window.changyan !== undefined) {
-        return;
-      } else {
+      // if (window.changyan !== undefined) {
+      //   return;
+      // } else {
         window.changyan = {};
         window.changyan.api = {};
         window.changyan.api.config = function(conf) {
@@ -24,7 +24,7 @@
             window.changyan.tmpHandles.push(fn);
           }
         }
-      }
+      // }
     };
   
     var createMobileNs = function() {

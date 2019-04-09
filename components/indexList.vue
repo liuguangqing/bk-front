@@ -18,8 +18,8 @@
             </div>
             <div class="date">
               <span>发布时间：{{formatDate(sendIte.es_isTime)}}</span>
-              <span>查看：{{sendIte.es_view}}</span>
-              <span>点赞：{{sendIte.es_good}}</span>
+              <!-- <span>查看：{{sendIte.es_view}}</span> -->
+              <!-- <span>点赞：{{sendIte.es_good}}</span> -->
             </div>
           </div>
         </li>
@@ -118,6 +118,7 @@ export default {
         margin-bottom: 10px;
         font-size: 14px;
         color: #e6a23c;
+        text-align: right;
       }
     }
   }

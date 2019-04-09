@@ -35,7 +35,7 @@ export default {
   // background: url(../assets/images/bkbg.jpeg) repeat center top / 100%;
   // background-attachment: fixed;
   // background-color: #e9eaed;
-  background-color: rgba(155, 155, 155, .6);
+  background-color: rgba(155, 155, 155, .3);
   height: 100%;
   box-sizing: border-box;
   overflow-y: scroll;
