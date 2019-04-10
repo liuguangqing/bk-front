@@ -20,3 +20,7 @@ $ yarn run generate
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+
+# 上传地址
+
+git@github.com:liuguangqing/bkfront.git
