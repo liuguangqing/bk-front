@@ -4,17 +4,17 @@
       <div class="contcent">
         <el-row>
           <el-col :span="4">
-            <div class="grid-content bg-purple">
-              <contleft/>
+            <div class="grid-content bg-purple md_display">
+              <contleft />
             </div>
           </el-col>
-          <el-col :span="15">
+          <el-col :span="15" class="md_content">
             <div class="grid-content bg-purple-light">
               <nuxt-child/>
             </div>
           </el-col>
           <el-col :span="5">
-            <div class="grid-content bg-purple-light">
+            <div class="grid-content bg-purple-light md_display">
               <contright/>
             </div>
           </el-col>
@@ -78,9 +78,20 @@ export default {
 }
 </script>
 <style scoped lang="less">
+@media screen and (max-width: 1200px) {
+  .md_display {
+    display: none;
+  }
+  .md_content {
+    width: 100%;
+  }
+  .el-col {
+    padding: 0 10px;
+  }
+}
 .contcent {
   padding: 10px 0 0;
-  width: 1200px;
+  max-width: 1200px;
   height: 100%;
 }
 .contcent {

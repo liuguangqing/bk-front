@@ -51,6 +51,7 @@ export default {
       }
     },
     async getessayPage(params) {
+      let _this = this
       this.pageType = this.geturl('type')
       console.log(this.pageType)
       if (this.pageType && this.pageType != '') {
@@ -60,6 +61,33 @@ export default {
       this.params.pageSize = 5
       console.log('this.params', this.params)
       // console.log('params', params)
+      // 导航
+      // let navList = await servers.navData()
+      // function fn(arrs) {
+      //   let arrtemp = ''
+      //   rec(arrs)
+      //   function rec(arrs) {
+      //     if (arrs.length > 0) {
+      //       arrs.forEach(element => {
+      //         if (element.rank == 'yi' && element.data.length > 0) {
+      //           rec(element.data)
+      //         } else {
+      //           console.log(_this.pageType)
+      //           if(_this.pageType == element.cont && _this.pageType != 'all') {
+      //             arrtemp =  element.title
+      //           }else if( _this.pageType == 'all') {
+      //             arrtemp = '首页'
+      //           }
+      //         }
+      //       })
+      //     }
+      //   }
+      //   return arrtemp
+      // }
+      // let getTitle = fn(navList.data)
+      // this.params.pageTypeTitle =  getTitle
+      // console.log('getTitle',this.params.pageTypeTitle)
+
 
       let data = await servers.getessayPage(this.params)
       this.dataList = data.data

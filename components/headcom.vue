@@ -110,7 +110,7 @@ export default {
   background-color: @bgcolor;
   position: fixed;
   z-index: 10;
-  min-width: 1000px;
+  min-width: 1040px;
 }
 .headercontall {
   width: 100%;
