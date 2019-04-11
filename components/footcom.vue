@@ -4,7 +4,7 @@
       <div class="fl">
         <div class="foot_links">
         <span>友情链接：</span>
-          <a rel="nofollow" v-for="(ite,ind) in friendList" :key="ind">
+          <a rel="nofollow" v-for="(ite,ind) in friendList" :key="ind" :href="ite.cont" target="_blank">
             <div class>{{ite.title}}</div>
           </a>
         </div>
@@ -69,11 +69,11 @@ export default {
     color: #ddd;
     width: 1200px;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 20px 0 0 10px;
     .foot_links {
       margin-bottom: 10px;
       a {
-        color: #ddd;
+        color: lightseagreen;
         display: inline-block;
         margin-right: 15px;
       }
