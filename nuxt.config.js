@@ -1,12 +1,13 @@
 const pkg = require('./package')
 
 module.exports = {
-  mode: 'spa',
+  // mode: 'spa',
+  mode: 'universal',
   /*
    ** Headers of the page
    */
   head: {
-    title: pkg.name,
+    title: '香菊网 - 🍊 香菊网，前端技术博客(xiangjv.top)',
     meta: [{
         charset: 'utf-8'
       },
@@ -15,10 +16,15 @@ module.exports = {
         content: 'width=device-width, initial-scale=1'
       },
       {
+        hid: 'keywords',
+        name: 'keywords',
+        content: 'xiangjv.top 博客 香菊 香菊网 nuxt CSDN h5 xiangjv'
+      },
+      {
         hid: 'description',
         name: 'description',
-        content: pkg.description
-      }
+        content: 'xiangjv.top 提供给自己做笔记和联系的前端学习博客，nuxt框架 nodeJs+express  nginx+mysql'
+      }, 
     ],
     link: [{
       rel: 'icon',

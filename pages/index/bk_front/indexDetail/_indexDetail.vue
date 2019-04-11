@@ -38,7 +38,7 @@ import { formatDate } from '~/assets/js/base.js'
 export default {
   head() {
     return {
-      title: this.essayDetail.es_title,
+      title: `${this.essayDetail.es_title} - 🍊 香菊网，前端技术博客(xiangjv.top)`,
       meta: [
         {
           hid: 'description',
@@ -172,7 +172,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style scoped lang="less">
 .container {
   padding: 10px 10px 0;
   min-height: 900px !important;
@@ -224,8 +224,6 @@ main {
   border-radius: 4px;
   color: #fff;
 }
-pre::-webkit-scrollbar-thumb >>> {
-  background-color: #eebc8e;
-  border-radius: 10px;
-}
+
+
 </style>
