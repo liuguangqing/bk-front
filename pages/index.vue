@@ -9,7 +9,7 @@
             </div>
           </el-col>
           <el-col :span="15" class="md_content">
-            <div class="grid-content bg-purple-light">
+            <div class="grid-content bg-purple-light conter_box">
               <nuxt-child/>
             </div>
           </el-col>
@@ -96,6 +96,9 @@ export default {
 }
 .contcent {
   margin: auto;
+}
+.conter_box{
+  min-height: 500px;
 }
 .el-col {
   box-sizing: border-box;

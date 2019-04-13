@@ -84,7 +84,7 @@ export default {
   components: {},
   mounted() {
     this.getnav()
-    this.getessay()
+    // this.getessay()
     this.scrollLIst()
   },
   methods: {
@@ -139,6 +139,9 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+.cont_mid{
+  min-height: 200px;
+}
 .right_all{
   position: fixed;
   width: 240px;

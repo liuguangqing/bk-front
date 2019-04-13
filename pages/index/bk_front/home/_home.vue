@@ -7,6 +7,13 @@
         <input type="text" id="page-num">
         <input type="submit" id="goto" value="Go">
       </form> -->
+      <div class="block">
+        <el-pagination
+          layout="prev, pager, next"
+          :total="allessay"
+          :page-size="5">
+        </el-pagination>
+      </div>
     </div>
   </section>
 </template>
@@ -19,25 +26,28 @@ import servers from '~/plugins/axios'
 export default {
   components: {
     contleft,
-    indexList
+    indexList,
   },
   data() {
     return {
       dataList: [],
       pageType: '',
-      params: {}
+      params: {},
+      allessay: 0
     }
   },
   mounted() {
     
 
     this.getessayPage()
+    this.getessayTiao()
     console.log('home')
   },
   watch: {
 　　// 利用watch方法检测路由变化：
 　　'$route': function (to, from) {
       this.getessayPage()
+      this.getessayTiao()
 　　　// 拿到目标参数 to.query.id 去再次请求数据接口
 　　}
   },
@@ -50,52 +60,23 @@ export default {
         return paramsTemp.split('-')[1]
       }
     },
-    async getessayPage(params) {
+    async getessayTiao() {
+      // 获取最大条数
+      let res  = await servers.getessayPage({pageType: this.geturl('type')})      
+      this.allessay = res.data.length
+    },
+    async getessayPage() {
       let _this = this
       this.pageType = this.geturl('type')
-      console.log(this.pageType)
       if (this.pageType && this.pageType != '') {
         this.params.pageType = this.pageType
       }
       this.params.pageNow = this.geturl('pageNo')
       this.params.pageSize = 5
-      console.log('this.params', this.params)
       // console.log('params', params)
-      // 导航
-      // let navList = await servers.navData()
-      // function fn(arrs) {
-      //   let arrtemp = ''
-      //   rec(arrs)
-      //   function rec(arrs) {
-      //     if (arrs.length > 0) {
-      //       arrs.forEach(element => {
-      //         if (element.rank == 'yi' && element.data.length > 0) {
-      //           rec(element.data)
-      //         } else {
-      //           console.log(_this.pageType)
-      //           if(_this.pageType == element.cont && _this.pageType != 'all') {
-      //             arrtemp =  element.title
-      //           }else if( _this.pageType == 'all') {
-      //             arrtemp = '首页'
-      //           }
-      //         }
-      //       })
-      //     }
-      //   }
-      //   return arrtemp
-      // }
-      // let getTitle = fn(navList.data)
-      // this.params.pageTypeTitle =  getTitle
-      // console.log('getTitle',this.params.pageTypeTitle)
-
 
       let data = await servers.getessayPage(this.params)
       this.dataList = data.data
-      console.log('this.dataList', this.dataList)
-      let res  = await servers.getessayPage({pageType:this.params.pageType})
-      console.log('resresresresresres', res)
-      let ceiling = Math.ceil(res.data.length / this.params.pageSize)
-      this.fenPage(ceiling)
     },
     fenPage(alllist) {
       console.log('alllist', alllist)
