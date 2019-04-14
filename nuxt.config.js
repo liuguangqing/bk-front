@@ -16,6 +16,10 @@ module.exports = {
         content: 'width=device-width, initial-scale=1'
       },
       {
+        name: 'baidu-site-verification',
+        content: 'eizAp8z7ct'
+      },
+      {
         hid: 'keywords',
         name: 'keywords',
         content: 'xiangjv.top 博客 香菊 香菊网 nuxt CSDN h5 xiangjv'
