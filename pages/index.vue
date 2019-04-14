@@ -21,7 +21,12 @@
         </el-row>
       </div>
     </div>
+    <!-- 背景 -->
     <!-- <bgcon class="bgcon"/> -->
+    <!-- 移动端菜单 -->
+    <div>
+      <url-icon class="md_display_show" />
+    </div>
     <footercom/>
   </section>
 </template>
@@ -31,6 +36,7 @@ import contleft from '~/components/contleft'
 import contright from '~/components/contright'
 import footercom from '~/components/footcom'
 // import bgcon from '~/components/bgcon'
+import urlIcon from '~/components/urlIcon'
 
 import servers from '../plugins/axios'
 
@@ -45,6 +51,7 @@ export default {
     contleft,
     contright,
     footercom,
+    urlIcon
     // bgcon
   },
   mounted() {
@@ -82,12 +89,18 @@ export default {
   .md_display {
     display: none;
   }
+  .md_display_show {
+    display: block !important;
+  }
   .md_content {
     width: 100%;
   }
   .el-col {
     padding: 0 10px;
   }
+}
+.md_display_show {
+  display: none;
 }
 .contcent {
   padding: 10px 0 0;

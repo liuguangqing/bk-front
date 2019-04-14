@@ -67,9 +67,10 @@ export default {
   z-index: 9;
   .foot_contain {
     color: #ddd;
-    width: 1200px;
+    width: 100%;
     margin: 0 auto;
     padding: 20px 0 0 10px;
+    box-sizing: border-box;
     .foot_links {
       margin-bottom: 10px;
       a {
@@ -85,7 +86,7 @@ export default {
       width: 70%;
     }
     .fr {
-      width: 10%;
+      width: 120px;
       text-align: center;
       line-height: 1;
       transform: translateY(-5px);

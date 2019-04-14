@@ -4,22 +4,35 @@
     <div class="conttall">
       <nuxt/>
     </div>
-    <div class="loading_box">
-      <img src="../assets/images/earth-loading.svg" alt>
-    </div>
   </div>
 </template>
 <script>
 import headecom from '~/components/headcom'
 
+import { Loading } from 'element-ui';
 export default {
   data() {
-    return {}
+    return {
+      loadingInstance: {}
+    }
   },
   components: {
-    headecom,
+    headecom
+  },
+  created(){
+    let options = {
+      fullscreen: true ,
+      text: 'xiangjv',
+      background: '#fff'
+    }
+    this.loadingInstance = Loading.service(options);
   },
   mounted() {
+    this.$nextTick(() => { // 以服务的方式调用的 Loading 需要异步关闭
+      setTimeout(() => {
+        this.loadingInstance.close();
+      }, 800);
+    });
   }
 }
 </script>
@@ -41,23 +54,22 @@ export default {
   overflow-y: scroll;
 }
 /*定义滚动条轨道*/
-.conttall::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background-color: transparent;
-    // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.42);
     -webkit-box-shadow: transparent;
 }
 
 /*定义滚动条*/
-.conttall::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background-color: #bbb;
     border-radius: 10px;
 }
 /*定义滚动条高宽及背景*/
-.conttall::-webkit-scrollbar {
+::-webkit-scrollbar {
     background-color: transparent;
     // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.22);
     width: 5px;
-    height:5px;
+    height:2px;
 }
 .loading_box {
   width: 100%;

@@ -84,7 +84,7 @@ export default {
   components: {},
   mounted() {
     this.getnav()
-    // this.getessay()
+    this.getessay()
     this.scrollLIst()
   },
   methods: {

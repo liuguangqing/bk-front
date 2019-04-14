@@ -1,4 +1,5 @@
 <template>
+<div class="boxScroll">
   <section class="headerBox">
     <div class="headercontall">
       <div class="header">
@@ -71,6 +72,7 @@
       </el-menu>
     </div>
   </section>
+</div>
 </template>
 <script>
 import servers from '~/plugins/axios'
@@ -108,14 +110,22 @@ export default {
 .headerBox{
   width: 100%;
   background-color: @bgcolor;
+  height: 60px;
   position: fixed;
   z-index: 10;
-  min-width: 1040px;
+  // min-width: 1040px;
+}
+@media screen and (max-width: 700px) {
+  .headercontall {
+    overflow-x: scroll !important;
+  }
 }
 .headercontall {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto ;
+  overflow-x: hidden;
+  background-color: #fff;
   .header {
     position: absolute;
     z-index: 9;
@@ -127,11 +137,13 @@ export default {
       font-family: -webkit-pictograph;
       font-weight: 700;
       color: @ftcolor;
+      background: #fff;
     }
   }
   .el-menu {
     padding-left: 160px;
     background-color: @bgcolor !important;
+    min-width: 1040px;
     .el-menu-item ,.el-submenu__title{
       color: @ftcolor !important;
       font-size: 14px;

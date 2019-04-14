@@ -10,7 +10,10 @@
       <div class="block">
         <el-pagination
           layout="prev, pager, next"
+          :pager-count="5"
           :total="allessay"
+          @current-change="currentChange"
+          :current-page="currentPage"
           :page-size="5">
         </el-pagination>
       </div>
@@ -33,7 +36,8 @@ export default {
       dataList: [],
       pageType: '',
       params: {},
-      allessay: 0
+      allessay: 0,
+      currentPage: 1
     }
   },
   mounted() {
@@ -60,10 +64,21 @@ export default {
         return paramsTemp.split('-')[1]
       }
     },
+    // 选择页数
+    currentChange(e) {
+      console.log('currentChange', e)
+      this.currentPage = e
+      // location.href = '/bk_front/home/'+this.geturl('type')+'-' + e
+      this.$router.push('/bk_front/home/'+this.geturl('type')+'-' + e)
+      // let scrollgo = document
+      //   .getElementsByClassName('conttall')[0]
+      //   .scrollTo(0, 0)
+    },
     async getessayTiao() {
       // 获取最大条数
       let res  = await servers.getessayPage({pageType: this.geturl('type')})      
       this.allessay = res.data.length
+      this.currentPage = this.geturl('pageNo') * 1
     },
     async getessayPage() {
       let _this = this
@@ -136,6 +151,21 @@ export default {
   .grid-content {
     height: 200px;
     background-color: rgba(250, 250, 250, 0.9);
+  }
+}
+.el-pagination{
+  
+  /deep/ .number {
+    background-color: transparent !important;
+  }
+  /deep/ .btn-prev {
+    background-color: transparent !important;
+  }
+  /deep/ .btn-next {
+    background-color: transparent !important;
+  }
+  /deep/ .el-icon.more {
+    background-color: transparent !important;
   }
 }
 </style>
