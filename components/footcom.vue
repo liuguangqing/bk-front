@@ -57,6 +57,11 @@ export default {
 }
 </script>
 <style scoped lang="less">
+@media screen and (max-width: 450px) {
+  .foot_contain .fl {
+    display: none;
+  }
+}
 .footerbox {
   background-color: #333;
   height: 120px;

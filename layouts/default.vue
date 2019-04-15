@@ -86,5 +86,7 @@ export default {
     transform: translate(-50% , -50%)
   }
 }
-
+#pop_ad {
+  display: none;
+}
 </style>

@@ -22,7 +22,7 @@ module.exports = {
       {
         hid: 'keywords',
         name: 'keywords',
-        content: 'xiangjv.top 博客 香菊 香菊网 nuxt CSDN h5 xiangjv'
+        content: 'xiangjv.top,博客,香菊,香菊网,nuxt,CSDN,h5,xiangjv'
       },
       {
         hid: 'description',
@@ -39,9 +39,9 @@ module.exports = {
       {
         src: '/js/share.js'
       }
-      // ,{
-      //   src: '/js/changyan.js'
-      // }
+      ,{
+        src: '/js/tijiao.js'
+      }
     ]
   },
 
@@ -59,7 +59,6 @@ module.exports = {
     'element-ui/lib/theme-chalk/index.css',
     '~/assets/css/reset.css',
     '~/assets/css/style.css',
-    // 'prismjs/themes/prism-dark.css',
   ],
 
   /*
@@ -128,14 +127,5 @@ module.exports = {
   router: {
     // mode: 'hash'
   }
-  // generate: {
-  //   routes: function () {
-  //     return axios.get('https://my-api/users')
-  //     .then((res) => {
-  //       return res.data.map((user) => {
-  //         return '/users/' + user.id
-  //       })
-  //     })
-  //   }
-  // }
+
 }

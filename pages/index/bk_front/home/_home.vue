@@ -2,7 +2,7 @@
   <section class="container">
     <index-list v-for="(ite,ind) in dataList" :key="ind" :sendIte="ite"/>
     <div class="paging">
-      <div class="paging_child"></div>
+      <!-- <div class="paging_child"></div> -->
       <!-- <form action id="page-go">
         <input type="text" id="page-num">
         <input type="submit" id="goto" value="Go">
@@ -134,6 +134,11 @@ export default {
 }
 </script>
 <style scoped lang="less">
+@media screen and (max-width: 450px) {
+  .paging {
+    overflow-y: scroll;
+  }
+}
 .container {
   padding: 10px 20px 0;
   // height: 900px !important;
