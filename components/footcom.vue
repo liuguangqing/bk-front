@@ -76,6 +76,7 @@ export default {
     margin: 0 auto;
     padding: 20px 0 0 10px;
     box-sizing: border-box;
+    max-width: 1040px;
     .foot_links {
       margin-bottom: 10px;
       a {

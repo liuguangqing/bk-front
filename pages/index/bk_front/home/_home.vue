@@ -24,9 +24,34 @@
 import contleft from '~/components/contleft'
 import indexList from '~/components/indexList'
 import { SimplePagination } from '~/assets/js/SimplePagination'
-
 import servers from '~/plugins/axios'
+
+
 export default {
+
+  async asyncData ({ params, error, store }) {
+
+    console.log('params',params.home)
+
+    let sendParams = {}
+    sendParams.pageType = params.home.split('-')[0]
+    sendParams.pageNow = params.home.split('-')[1]
+    sendParams.pageSize = 5
+    console.log('sendParams',sendParams)
+    // 文章列表
+    let dataList = await servers.getessayPage(sendParams)
+    // 文章页码
+    let getessayTiao = await servers.getessayPage({pageType: params.home.split('-')[0]})      
+    let allessay = getessayTiao.data.length
+    let currentPage = params.home.split('-')[1] * 1
+
+    return {
+      dataList: dataList.data,
+      allessay:allessay,
+      currentPage: currentPage
+    }
+
+  },
   components: {
     contleft,
     indexList,
@@ -41,15 +66,13 @@ export default {
     }
   },
   mounted() {
-    
-
-    this.getessayPage()
-    this.getessayTiao()
-    console.log('home')
+    // this.getessayPage()
+    // this.getessayTiao()
   },
   watch: {
 　　// 利用watch方法检测路由变化：
 　　'$route': function (to, from) {
+      console.log()
       this.getessayPage()
       this.getessayTiao()
 　　　// 拿到目标参数 to.query.id 去再次请求数据接口

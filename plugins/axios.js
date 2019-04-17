@@ -45,14 +45,14 @@ service.interceptors.response.use(function (res) {
 
 export function getData(url) {
   return service({
-    url: url,
+    url: 'http://47.107.171.45' + url,
     method: 'get',
   })
 }
 
 export function postData(url, params) {
   return service({
-    url: url,
+    url: 'http://47.107.171.45:80' + url,
     method: 'post',
     params
   })

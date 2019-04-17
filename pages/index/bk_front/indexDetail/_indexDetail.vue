@@ -36,6 +36,16 @@ import changyan from '~/components/changyan'
 import servers from '~/plugins/axios'
 import { formatDate } from '~/assets/js/base.js'
 export default {
+  async asyncData ({ params, error, store }) {
+    // 文章详情
+      let article = await  servers.getessayDetial({ essayId: params.indexDetail })
+      article.data.es_content = article.data.es_content.replace(/!!&!!/g, "'")
+      article.data.es_tagList = article.data.es_tags.split(',')
+      article.data.es_pasList = article.data.es_keywords.split(',')
+      return {
+        essayDetail: article.data
+      }
+  },
   head() {
     return {
       title: `${this.essayDetail.es_title} - 🍊 香菊网，前端技术博客(xiangjv.top)`,
@@ -51,9 +61,6 @@ export default {
           content: this.essayDetail.es_keywords
         }
       ]
-      // script: [
-      //   {src: '~/plugins/changyan.js'}
-      // ]
     }
   },
   data() {
@@ -69,16 +76,9 @@ export default {
     changyan
   },
   mounted() {
-    this.load = this.$loading({ fullscreen: true })
+    // this.load = this.$loading({ fullscreen: true })
     console.log(this.$route)
     this.essayId = this.$route.params.indexDetail
-    this.getGoodsDetil(this.essayId)
-    // var block = document.getElementById('some-code')
-    // Prism.highlightElement(block);
-    //
-    // if (window.changyan !== undefined || window.cyan !== undefined) {
-    //   return;
-    // }
     var createNs = function() {
       // if (window.changyan !== undefined) {
       //   return;
@@ -159,16 +159,16 @@ export default {
     formatDate(date, fmt) {
       return formatDate(date, fmt)
     },
-    async getGoodsDetil() {
-      let params = { essayId: this.essayId }
-      let data = await servers.getessayDetial(params)
-      this.load.close()
-      data.data.es_content = data.data.es_content.replace(/!!&!!/g, "'")
-      data.data.es_tagList = data.data.es_tags.split(',')
-      data.data.es_pasList = data.data.es_keywords.split(',')
-      this.essayDetail = data.data
-      console.log('essayDetail', this.essayDetail)
-    }
+    // async getGoodsDetil() {
+    //   let params = { essayId: this.essayId }
+    //   let data = await servers.getessayDetial(params)
+    //   this.load.close()
+    //   data.data.es_content = data.data.es_content.replace(/!!&!!/g, "'")
+    //   data.data.es_tagList = data.data.es_tags.split(',')
+    //   data.data.es_pasList = data.data.es_keywords.split(',')
+    //   this.essayDetail = data.data
+    //   console.log('essayDetail', this.essayDetail)
+    // }
   }
 }
 </script>

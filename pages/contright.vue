@@ -74,6 +74,31 @@ import servers from '../plugins/axios'
 import { formatDate } from '../assets/js/base.js'
 
 export default {
+  async asyncData ({ params, error, store }) {
+
+    console.log('params',params)
+    let colorArr = ['','success', 'info', 'warning', 'danger']
+    let data = await servers.navData()
+    console.log(data)
+    // let sendParams = {}
+    // sendParams.pageType = params.home.split('-')[0]
+    // sendParams.pageNow = params.home.split('-')[1]
+    // sendParams.pageSize = 5
+    // console.log('sendParams',sendParams)
+    // // 文章列表
+    // let dataList = await servers.getessayPage(sendParams)
+    // // 文章页码
+    // let getessayTiao = await servers.getessayPage({pageType: params.home.split('-')[0]})      
+    // let allessay = getessayTiao.data.length
+    // let currentPage = params.home.split('-')[1] * 1
+
+    // return {
+    //   dataList: dataList.data,
+    //   allessay:allessay,
+    //   currentPage: currentPage
+    // }
+
+  },
   data() {
     return {
       navList: [],
