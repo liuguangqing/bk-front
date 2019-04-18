@@ -50,7 +50,6 @@ module.exports = {
   css: [
     'element-ui/lib/theme-chalk/index.css',
     '~/assets/css/reset.css',
-    '~/assets/css/style.css',
   ],
 
   plugins: [
@@ -78,14 +77,9 @@ module.exports = {
       }
     ],
   ],
-  build: {
-    extend(config, ctx) {
 
-    },
-    rules: [{
-      test: /\.less$/,
-      use: ['style-loader', 'css-loader', 'less-loader']
-    }]
+  build: {
+
   },
   router: {
     // mode: 'hash'

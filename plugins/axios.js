@@ -13,7 +13,7 @@ const service = axios.create({
   // timeout: 5000 // request timeout
 })
 
-service.defaults.timeout = 5000
+service.defaults.timeout = 20000
 // service.defaults.baseURL = `http://172.20.47.245:2345/api`
 // service.defaults.withCredentials = true
 // POST传参序列化
