@@ -17,26 +17,17 @@
   </section>
 </template>
 <script>
-// import contleft from '~/components/contleft'
 import servers from '~/plugins/axios'
 export default {
-  // components: {
-  //   contleft
-  // },
-  data() {
+  async asyncData ({ params, error, store }) {
+    // 友链列表
+    let linkdata = await servers.getfriend()
+    console.log(linkdata)
     return {
-      friendList: []
+      friendList: linkdata.data
     }
   },
   mounted() {
-    this.togetData()
-    console.log(123)
-  },
-  methods: {
-    async togetData() {
-      let data = await servers.getfriend()
-      this.friendList = data.data
-    }
   }
 }
 </script>

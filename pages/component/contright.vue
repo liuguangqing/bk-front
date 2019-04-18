@@ -14,26 +14,12 @@
             <img class="qrcode" src="http://www.xiangjv.top/QQqrcode.png" alt>
             <img slot="reference" src="http://www.xiangjv.top/QQ.png">
           </el-popover>
-          <!-- <el-popover
-            placement="bottom"
-            width="250"
-            trigger="hover">
-            <span>https://github.com/liuguangqing</span>
-            <img   slot="reference" src="http://www.xiangjv.top/github.png">
-          </el-popover>-->
           <a href="https://github.com/liuguangqing">
             <img slot="reference" src="http://www.xiangjv.top/github.png">
           </a>
           <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1090464974@qq.com">
             <img slot="reference" src="http://www.xiangjv.top/email.png">
           </a>
-          <!-- <el-popover
-            placement="bottom"
-            width="200"
-            trigger="hover">
-            <span>http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=root@linhut.cn</span>
-            <img   slot="reference" src="http://www.xiangjv.top/email.png">
-          </el-popover>-->
         </div>
       </div>
     </div>
@@ -60,7 +46,6 @@
       </div>
       <div class="right_cont">
         <div class="classItem">
-          <!-- <nuxt-link v-for="ite in navList" :to="'/?type=' + ite.cont + '&pageNo=1'" :key="ite"> -->
           <nuxt-link v-for="(ite, ind) in navList" :to="'/bk_front/home/' + ite.cont + '-1'" :key="ind">
             <el-tag :type="ite.type">{{ite.title}}</el-tag>
           </nuxt-link>
@@ -70,48 +55,22 @@
   </section>
 </template>
 <script>
-import servers from '../plugins/axios'
-import { formatDate } from '../assets/js/base.js'
+import servers from '~/plugins/axios'
+import { formatDate } from '~/assets/js/base.js'
 
 export default {
-  async asyncData ({ params, error, store }) {
-
-    console.log('params',params)
-    let colorArr = ['','success', 'info', 'warning', 'danger']
-    let data = await servers.navData()
-    console.log(data)
-    // let sendParams = {}
-    // sendParams.pageType = params.home.split('-')[0]
-    // sendParams.pageNow = params.home.split('-')[1]
-    // sendParams.pageSize = 5
-    // console.log('sendParams',sendParams)
-    // // 文章列表
-    // let dataList = await servers.getessayPage(sendParams)
-    // // 文章页码
-    // let getessayTiao = await servers.getessayPage({pageType: params.home.split('-')[0]})      
-    // let allessay = getessayTiao.data.length
-    // let currentPage = params.home.split('-')[1] * 1
-
-    // return {
-    //   dataList: dataList.data,
-    //   allessay:allessay,
-    //   currentPage: currentPage
-    // }
-
-  },
   data() {
     return {
       navList: [],
-      essayList: [],
       fixedar: false
     }
   },
   components: {},
   mounted() {
-    this.getnav()
-    this.getessay()
     this.scrollLIst()
+    this.navList = this.rightNavList
   },
+  props: ['rightNavList' , 'essayList'],
   methods: {
     scrollLIst(){
       let _this = this
@@ -126,39 +85,6 @@ export default {
     },
     formatDatea(dats,fmt){
       return formatDate(dats)
-    },
-    async getessay() {
-      let parmasTemp = {
-        pageNow: 1,
-        pageSize: 4,
-        pageType: 'all'
-      }
-      let m = await servers.getessayPage(parmasTemp)
-      this.essayList = m.data
-    },
-    async getnav() {
-      let colorArr = ['','success', 'info', 'warning', 'danger']
-      let data = await servers.navData()
-      // console.log("nav", fn(data.data));
-      function fn(arrs) {
-        let arrtemp = []
-        rec(arrs)
-        function rec(arrs) {
-          if (arrs.length > 0) {
-            arrs.forEach(element => {
-              if (element.rank == 'yi' && element.data.length > 0) {
-                rec(element.data)
-              } else {
-                element.type = colorArr[parseInt(Math.random() * 5-1)]
-                arrtemp.push(element)
-              }
-            })
-          }
-        }
-        return arrtemp
-      }
-      this.navList = fn(data.data)
-      console.log(this.navList)
     }
   }
 }
@@ -173,7 +99,6 @@ export default {
 }
 a {
   display: inline-block;
-  // padding: 0 5px 10px 0;
 }
 .el-col .grid-content {
   background-color: transparent;
@@ -195,7 +120,6 @@ a {
 section > div {
   padding: 10px;
   background-color: rgba(250, 250, 250, 0.93);
-  //   border-radius: 10px;
   margin-bottom: 10px;
   .right_title {
     h2 {
@@ -228,7 +152,6 @@ section > div {
   .rev_item {
     margin-bottom: 8px;
     padding: 8px;
-    // border-bottom: 1px solid #e9eaed;
     border-radius: 2px;
     background-color: #e9eaed;
     .title {
@@ -247,10 +170,9 @@ section > div {
     }
   }
   .classItem {
-    // padding: 20px;
-    & > span {
+    & > a {
       margin-right: 4px;
-      margin-bottom: 10px;
+      margin-bottom: 4px;
     }
   }
 }

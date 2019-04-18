@@ -12,45 +12,30 @@
 </template>
 <script>
 import servers from '~/plugins/axios'
-// import contleft from '~/components/contleft'
-
-// import servers from '../plugins/axios'
 export default {
-  // components: {
-  //   // contleft
-  // },
-  data() {
-    return {
-      navList: []
-    }
-  },
-  mounted() {
-    this.getnav()
-  },
-  methods: {
-    async getnav() {
-      let colorArr = ['','success', 'info', 'warning', 'danger']
-      let data = await servers.navData()
-      // console.log("nav", fn(data.data));
-      function fn(arrs) {
-        let arrtemp = []
-        rec(arrs)
-        function rec(arrs) {
-          if (arrs.length > 0) {
-            arrs.forEach(element => {
-              if (element.rank == 'yi' && element.data.length > 0) {
-                rec(element.data)
-              } else {
-                element.type = colorArr[parseInt(Math.random() * 5-1)]
-                arrtemp.push(element)
-              }
-            })
-          }
+  async asyncData ({ params, error, store }) {
+    let colorArr = ['','success', 'info', 'warning', 'danger']
+    // 标签列表
+    let tagdata = await servers.navData()
+    function fn(arrs) {
+      let arrtemp = []
+      rec(arrs)
+      function rec(arrs) {
+        if (arrs.length > 0) {
+          arrs.forEach(element => {
+            if (element.rank == 'yi' && element.data.length > 0) {
+              rec(element.data)
+            } else {
+              element.type = colorArr[parseInt(Math.random() * 5-1)]
+              arrtemp.push(element)
+            }
+          })
         }
-        return arrtemp
       }
-      this.navList = fn(data.data)
-      console.log(this.navList)
+      return arrtemp
+    }
+    return {
+      navList: fn(tagdata.data)
     }
   }
 }

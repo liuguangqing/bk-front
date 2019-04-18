@@ -59,27 +59,27 @@
 import servers from '~/plugins/axios'
 import { formatDate } from '~/assets/js/base.js'
 export default {
+  async asyncData ({ params, error, store }) {
+    let sendparams = { cunt: 'css,js,H5', pageSize: 10 }
+    // 前端相关
+    let essagedata = await servers.getFrontAbout(sendparams)
+    essagedata.data.forEach(element => {
+      element.es_tagList = element.es_tags.split(',')
+    })
+    return {
+      dataList: essagedata.data
+    }
+  },
   data() {
     return {
-      dataList: []
     }
   },
   mounted() {
-    let params = { cunt: 'css,js,H5', pageSize: 10 }
-    this.getessayPage(params)
   },
   methods: {
     formatDate(date, fmt) {
       return formatDate(date, fmt)
     },
-    async getessayPage(params) {
-      let data = await servers.getFrontAbout(params)
-      data.data.forEach(element => {
-        element.es_tagList = element.es_tags.split(',')
-      })
-      // this.$loading({ fullscreen: false })
-      this.dataList = data.data
-    }
   }
 }
 </script>

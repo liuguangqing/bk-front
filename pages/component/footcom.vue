@@ -10,7 +10,7 @@
         </div>
         <div>Copyright © 2019 幻雨焉缘博客 | 浙ICP备19001843号-1</div>
         <div class="foot_line">----------------------------------</div>
-        <pre>最可怕的不是止步不前， 而是安于现状。        ──── 前端攻城狮</pre>
+        <pre>种一棵树，最好的培养时间是十年前，其次是现在 加油  (ง •_•)ง。        ──── 前端攻城狮</pre>
       </div>
       <div class="fr">
         <el-button type="primary" icon="el-icon-share" circle></el-button>
@@ -22,36 +22,14 @@
   </section>
 </template>
 <script>
-import servers from '../plugins/axios'
-
+import servers from '~/plugins/axios'
 export default {
-  data() {
-    return {
-      friendList: []
-    }
-  },
-  mounted() {
-    this.togetData()
-  },
+  props: ['friendList'],
   methods: {
-    async togetData() {
-      let data = await servers.getfriend()
-      this.friendList = data.data
-    },
     backTop() {
       let scrollgo = document
         .getElementsByClassName('conttall')[0]
         .scrollTo(0, 0)
-
-      //   var scrollToTop = window.setInterval(function() {
-      //     var pos = window.pageYOffset
-      //     console.log(pos)
-      //     if (pos > 0) {
-      //       scrollgo.scrollTo(0, pos - 10) // how far to scroll on each step
-      //     } else {
-      //       window.clearInterval(scrollToTop)
-      //     }
-      //   }, 16)
     }
   }
 }

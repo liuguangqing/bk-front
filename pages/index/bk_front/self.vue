@@ -17,7 +17,6 @@
     </div>
     <div>
       <div class="mylinkTitle">博客经历</div>
-      <!-- <hr> -->
       <div>
         <p>201902月15日正式上线 框架 nuxt + vue-element-admin + nodeJs-express + sql</p>
         <p>本站源码，https://github.com/liuguangqing/bkfront</p>
@@ -26,21 +25,27 @@
     </div>
     <div>
       <div class="mylinkTitle">专业技能</div>
-      <!-- <hr> -->
       <div>
-        <p>熟悉使用sqlmap,xss和Kali系统.</p>
+        <p>熟悉使用vue全家桶, nuxt, 了解nodeJs 和 nginx</p>
       </div>
     </div>
     <div>
       <div class="mylinkTitle">信仰编程</div>
-      <!-- <hr> -->
       <div>
         <p>优美胜于丑陋 (menVscode)</p>
       </div>
     </div>
     <div>
+      <div class="mylinkTitle">博客</div>
+      <div>
+        <p>前端使用 nuxtJs + elementsUI , 脱离 csr 完成 ssr 渲染 </p>
+        <p>后端使用 nodeJs + express + multer 。完成数据库操作 文件上传</p>
+        <p>数据库 mySQL</p>
+        <p>代理 nginx  , pm2 守护进程</p>
+      </div>
+    </div>
+    <div>
       <div class="mylinkTitle">微语</div>
-      <!-- <hr> -->
       <div>
         <p>种一棵树最好的培养时间是十年前，其次是现在。。加油  (ง •_•)ง</p>
       </div>
@@ -80,5 +85,10 @@ export default {
     height: 200px ;
     background-color: rgba(250, 250,250, .9);
   }
+}
+p {
+  padding: 4px 0;
+  color: #2e2e2e;
+  font-size: 14px;
 }
 </style>

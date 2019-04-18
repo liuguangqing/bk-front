@@ -2,11 +2,6 @@
   <section class="container">
     <index-list v-for="(ite,ind) in dataList" :key="ind" :sendIte="ite"/>
     <div class="paging">
-      <!-- <div class="paging_child"></div> -->
-      <!-- <form action id="page-go">
-        <input type="text" id="page-num">
-        <input type="submit" id="goto" value="Go">
-      </form> -->
       <div class="block">
         <el-pagination
           layout="prev, pager, next"
@@ -25,7 +20,6 @@ import contleft from '~/components/contleft'
 import indexList from '~/components/indexList'
 import { SimplePagination } from '~/assets/js/SimplePagination'
 import servers from '~/plugins/axios'
-
 
 export default {
 
@@ -65,17 +59,13 @@ export default {
       currentPage: 1
     }
   },
-  mounted() {
-    // this.getessayPage()
-    // this.getessayTiao()
-  },
   watch: {
 　　// 利用watch方法检测路由变化：
 　　'$route': function (to, from) {
-      console.log()
-      this.getessayPage()
-      this.getessayTiao()
-　　　// 拿到目标参数 to.query.id 去再次请求数据接口
+      console.log('路由刷新')
+      let scrollgo = document
+        .getElementsByClassName('conttall')[0]
+        .scrollTo(0, 0)
 　　}
   },
   methods: {
@@ -91,68 +81,8 @@ export default {
     currentChange(e) {
       console.log('currentChange', e)
       this.currentPage = e
-      // location.href = '/bk_front/home/'+this.geturl('type')+'-' + e
       this.$router.push('/bk_front/home/'+this.geturl('type')+'-' + e)
-      // let scrollgo = document
-      //   .getElementsByClassName('conttall')[0]
-      //   .scrollTo(0, 0)
     },
-    async getessayTiao() {
-      // 获取最大条数
-      let res  = await servers.getessayPage({pageType: this.geturl('type')})      
-      this.allessay = res.data.length
-      this.currentPage = this.geturl('pageNo') * 1
-    },
-    async getessayPage() {
-      let _this = this
-      this.pageType = this.geturl('type')
-      if (this.pageType && this.pageType != '') {
-        this.params.pageType = this.pageType
-      }
-      this.params.pageNow = this.geturl('pageNo')
-      this.params.pageSize = 5
-      // console.log('params', params)
-
-      let data = await servers.getessayPage(this.params)
-      this.dataList = data.data
-    },
-    fenPage(alllist) {
-      console.log('alllist', alllist)
-      let tmepUrl = location.href
-      if (this.geturl('pageNo')) {
-        tmepUrl = '/bk_front/home/'+this.geturl('type')+'-'
-      }
-      console.log('tmepUrltmepUrltmepUrltmepUrltmepUrl',tmepUrl)
-
-      var slp = new SimplePagination(alllist)
-      slp.init({
-        container: '.paging_child',
-        btnDom: 'a',
-        routerhead: tmepUrl,
-        dataNumberAttr: 'href',
-        maxShowBtnCount: 3,
-        onPageChange: state => {
-          console.log('pagination change New :', state.pageNumber)
-          // location.href = '/bk_front/home/' + this.geturl('type') + '-' + state.pageNumber
-          // params.pageNow = state.pageNumber
-          // params.pageSize = 3
-          // this.getessayPage(params)
-        }
-      })
-      // 定位当前页
-      if (this.geturl('pageNo')) {
-        console.log('定位到当前页')
-        slp.gotoPage(this.geturl('pageNo') * 1)
-      }
-      // try {
-      //   document.getElementById('page-go').addEventListener('submit', e => {
-      //     e.preventDefault()
-      //     console.log('123132')
-      //     slp.gotoPage(+document.getElementById('page-num').value)
-      //   })
-      // } catch (error) {
-      // }
-    }
   }
 }
 </script>

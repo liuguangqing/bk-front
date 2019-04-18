@@ -3,9 +3,7 @@ const pkg = require('./package')
 module.exports = {
   // mode: 'spa',
   mode: 'universal',
-  /*
-   ** Headers of the page
-   */
+
   head: {
     title: '香菊网 - 🍊 香菊网，前端技术博客(xiangjv.top)',
     meta: [{
@@ -36,57 +34,38 @@ module.exports = {
       href: '/favicon.ico'
     }],
     script:[
-      {
-        src: '/js/share.js'
-      }
-      ,{
-        src: '/js/tijiao.js'
-      }
+      // 百度分享
+      {src: '/js/share.js'},
+      // 百度主推文章收录用
+      {src: '/js/tijiao.js'},
+      // 百度统计js，
+      { src: '/js/tongji.js'}
     ]
   },
 
-  /*
-   ** Customize the progress-bar color
-   */
   loading: {
-    color: '#000'
+    color: '#CEA75C'
   },
 
-  /*
-   ** Global CSS
-   */
   css: [
     'element-ui/lib/theme-chalk/index.css',
     '~/assets/css/reset.css',
     '~/assets/css/style.css',
   ],
 
-  /*
-   ** Plugins to load before mounting the App
-   */
   plugins: [
-    { src: '@/plugins/element-ui'},
-    { src: '@/plugins/tongji.js', ssr: false },
-    { src: '@/plugins/prism.js'},
-    { src: '@/plugins/filters.js'},
-    
+    { src: '@/plugins/element-ui', ssr: true},
+    { src: '@/plugins/prism.js', ssr: true} ,    
   ],
 
   /*
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios', "@nuxtjs/proxy"
   ],
-  /*
-   ** Axios module configuration
-   */
-  // axios: {
-  //   // See https://github.com/nuxt-community/axios-module#options
-  //   prefix: '/api',
-  //   proxy: true 
-  // },
+
+  // 配置代理
   proxy: [
     [
       '/api',{
@@ -98,24 +77,8 @@ module.exports = {
         }
       }
     ],
-    // [
-    //   '/proxy', {
-    //     target: 'http://172.20.47.245:2345',
-    //     // target: 'http://192.168.1.29:8080',
-    //     // changeOrigin:true,
-    //     pathRewrite: {
-    //       '^/proxy': '/'
-    //     }
-    //   }
-    // ]
   ],
-  /*
-   ** Build configuration
-   */
   build: {
-    /*
-     ** You can extend webpack config here
-     */
     extend(config, ctx) {
 
     },
