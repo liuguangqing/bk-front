@@ -3,7 +3,7 @@
   <section class="headerBox">
     <div class="headercontall">
       <div class="header">
-        <a href="/bk_front/home/all-1">
+        <a href="/home/all-1">
           <h1>XiangJv</h1>
         </a>
       </div>
@@ -21,12 +21,12 @@
         <input type="text" placeholder="搜索...">
         </el-menu-item>-->
         <el-menu-item
-          :index="'/bk_front/home/' + (ite0.cont?ite0.cont:'all') + '-1'"
+          :index="'/home/' + (ite0.cont?ite0.cont:'all') + '-1'"
           v-for="( ite0, ind0 ) in navList"
           :key="ind0"
           v-if="ite0.isChild == 0"
         >
-          <nuxt-link :to="'/bk_front/home/' + (ite0.cont?ite0.cont:'all') + '-1'">{{ite0.title}}</nuxt-link>
+          <nuxt-link :to="'/home/' + (ite0.cont?ite0.cont:'all') + '-1'">{{ite0.title}}</nuxt-link>
         </el-menu-item>
         <el-submenu
           :index="ite.cont + ind"
@@ -36,12 +36,12 @@
         >
           <template slot="title">{{ite.title}}</template>
           <el-menu-item
-            :index="'/bk_front/home/' + ite2.cont + '-1'"
+            :index="'/home/' + ite2.cont + '-1'"
             v-for="(ite2, ind2 ) in ite.data"
             :key="ind2"
             v-if="ite.data.length > 0"
           >
-            <nuxt-link :to="'/bk_front/home/' + ite2.cont + '-1'">{{ite2.title}}</nuxt-link>
+            <nuxt-link :to="'/home/' + ite2.cont + '-1'">{{ite2.title}}</nuxt-link>
           </el-menu-item>
         </el-submenu>
       </el-menu>

@@ -3,14 +3,15 @@
         <div class="err_tain">
             <h2 v-if="error.statusCode == 404">404页面不存在</h2>
             <h2 v-else>500服务器错误</h2>
-            <nuxt-link to="/bk_front/home/all-1">返回首页</nuxt-link>
+            <nuxt-link to="/home/all-1">返回首页</nuxt-link>
         </div>
-
     </div>
 </template>
 <script>
+import servers from '~/plugins/axios'
+
 export default {
-    props: ['error']
+  props: ['error']
 }
 </script>
 <style lang="less">
@@ -27,9 +28,9 @@ export default {
         height: 100%;
         min-height: 400px;
         border-radius: 10px;
-        background:#fff url(http://xiangjv.top/xiangjv_404.png) no-repeat center top / 60%;
+        background:#fff url(http://xiangjv.top/xiangjv_404.png) no-repeat center top / 40%;
         text-align: center;
-        padding-top: 50%;
+        padding-top: 33%;
         color: #2e2e2e;
         font-size: 16px;
         font-family: cursive;

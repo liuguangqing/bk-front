@@ -4,7 +4,7 @@
       <h2>分类标签</h2>
     </header>
     <div class="classItem">
-      <nuxt-link v-for="(ite, ind) in navList" :to="'/bk_front/home/' + ite.cont + '-1'" :key="ind">
+      <nuxt-link v-for="(ite, ind) in navList" :to="'/home/' + ite.cont + '-1'" :key="ind">
         <el-tag :type="ite.type">{{ite.title}}</el-tag>
       </nuxt-link>
     </div>

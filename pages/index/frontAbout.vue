@@ -4,7 +4,7 @@
       <div class="content-box" v-for="(ite,ind) in dataList" :key="ind">
         <div class="posts-default-img">
           <nuxt-link
-            :to="'/bk_front/indexDetail/' + ite.es_id"
+            :to="'/indexDetail/' + ite.es_id"
           >
             <div class="overlay"></div>
             <img
@@ -20,7 +20,7 @@
               <nuxt-link
                 v-for="(iteImg, indImg) in ite.es_tagList"
                 :key="indImg"
-                :to="'/bk_front/indexDetail/' + ite.es_id"
+                :to="'/indexDetail/' + ite.es_id"
                 rel="tag"
               >
                 {{iteImg}}
@@ -28,7 +28,7 @@
             </div>
             <h2 class="font-h2">
               <nuxt-link
-                :to="'/bk_front/indexDetail/' + ite.es_id"
+                :to="'/indexDetail/' + ite.es_id"
               >{{ite.es_title}}</nuxt-link>
             </h2>
           </div>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nuxt-link :to="'/bk_front/indexDetail/' + sendIte.es_id">
+    <nuxt-link :to="'/indexDetail/' + sendIte.es_id">
       <!-- <nuxt-link :to="{path: '/xiangjv/indexDetail',params:{dealNmae: sendIte.es_id}}"> -->
       <ul class="bk_list">
         <li class="bk_item md_block">

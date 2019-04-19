@@ -81,7 +81,7 @@ export default {
     currentChange(e) {
       console.log('currentChange', e)
       this.currentPage = e
-      this.$router.push('/bk_front/home/'+this.geturl('type')+'-' + e)
+      this.$router.push('/home/'+this.geturl('type')+'-' + e)
     },
   }
 }

@@ -4,13 +4,13 @@
             <img src="http://xiangjv.top/xiaoxin.png" alt="">
         </div>
         <div class="user_list" v-show="showinfo" @click="showinfoFn">
-            <nuxt-link to="/bk_front/home/all-1">首页</nuxt-link>
-            <!-- <nuxt-link to="/bk_front/msg">公告</nuxt-link> -->
-            <nuxt-link to="/bk_front/tag">标签云</nuxt-link>
-            <nuxt-link to="/bk_front/frontAbout">前端相关</nuxt-link>
-            <nuxt-link to="/bk_front/links">友链</nuxt-link>
-            <nuxt-link to="/bk_front/self">博主相关</nuxt-link>
-            <nuxt-link to="/bk_front/about">关于</nuxt-link>
+            <nuxt-link to="/home/all-1">首页</nuxt-link>
+            <!-- <nuxt-link to="/msg">公告</nuxt-link> -->
+            <nuxt-link to="/tag">标签云</nuxt-link>
+            <nuxt-link to="/frontAbout">前端相关</nuxt-link>
+            <nuxt-link to="/links">友链</nuxt-link>
+            <nuxt-link to="/self">博主相关</nuxt-link>
+            <nuxt-link to="/about">关于</nuxt-link>
         </div>
     </div>
 </template>

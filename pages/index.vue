@@ -47,8 +47,8 @@ import { formatDate } from '~/assets/js/base.js'
 import servers from '~/plugins/axios'
 export default {
   async asyncData ({ params, error, store }) {
-
-    console.log('params',params)
+    // 开始请求
+    console.log(`xiangjv` + Math.random())
     let colorArr = ['','success', 'info', 'warning', 'danger']
     let parmasTemp = {
       pageNow: 1,
@@ -84,8 +84,6 @@ export default {
       headNav:navData.data,
       friendList:friendList.data
     }
-    console.log(this.navList)
-    console.log(data)
   },
   data() {
     return {
