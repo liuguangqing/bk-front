@@ -3,22 +3,15 @@
     <div>
       <div class="mylinkTitle">个人简介</div>
       <div>
-        <span>网名：</span>
-        <span>幻雨焉缘</span>
-      </div>
-      <div>
-        <span>出生：</span>
-        <span>1994年04月</span>
-      </div>
-      <div>
-        <span>职业：</span>
-        <span>WEB前端开发攻城狮</span>
+        <p>网名：幻雨焉缘</p>
+        <p>出生：1994年04月</p>
+        <p>职业：WEB前端开发攻城狮</p>
       </div>
     </div>
     <div>
       <div class="mylinkTitle">博客经历</div>
       <div>
-        <p>201902月15日正式上线 框架 nuxt + vue-element-admin + nodeJs-express + sql</p>
+        <p>2019年02月15日正式上线 框架 nuxt + vue-element-admin + nodeJs-express + sql</p>
         <p>本站源码，https://github.com/liuguangqing/bkfront</p>
         <p>用途： 存方学习笔记 小案例，分享学习经验。。。</p>
       </div>

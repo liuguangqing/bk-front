@@ -6,7 +6,7 @@
     <div class="mylinks">
       <div class="mylinkTitle">我的链接</div>
       <div class="mylinkCon">
-        <a  :href="'http://'+ite.cont" v-for="(ite, ind) in friendList" :key="ind">
+        <a  :href="ite.cont" v-for="(ite, ind) in friendList" :key="ind"  target="_blank">
           <div class="mylinkItem">
             <img :src="ite.icon" alt>
             <div class>{{ite.title}}</div>
@@ -68,18 +68,21 @@ header {
     color: #777;
   }
   .mylinkCon {
+    & > a {
+      padding: 20px 15px 0 0;
+    }
     .mylinkItem {
       display: inline-block;
       align-items: center;
-      width: 120px;
-      margin-top: 20px;
+
       text-align: center;
       img {
-        width: 40px;
+        width: auto;
         height: 40px;
         margin-bottom: 14px;
         border-radius: 8px;
-        box-shadow: 0 0 10px #d2d2d2;
+        padding: 4px 4px;
+        box-shadow: 0 0 10px #a1a1a1;
       }
       div {
         font-size: 15px;

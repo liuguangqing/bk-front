@@ -4,7 +4,7 @@
       <div class="fl">
         <div class="foot_links">
         <span>友情链接：</span>
-          <a rel="nofollow" v-for="(ite,ind) in friendList" :key="ind" :href="ite.cont" target="_blank">
+          <a v-for="(ite,ind) in friendList" :key="ind" :href="ite.cont" target="_blank">
             <div class>{{ite.title}}</div>
           </a>
         </div>
