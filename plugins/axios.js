@@ -9,14 +9,11 @@ import qs from 'qs'
 const Api = '/api'
 
 const service = axios.create({
-  // baseURL: process.env.BASE_API, // api的base_url
-  // timeout: 5000 // request timeout
+  timeout: 20000,
 })
 
-service.defaults.timeout = 5000
-// service.defaults.baseURL = `http://172.20.47.245:2345/api`
-// service.defaults.withCredentials = true
-// POST传参序列化
+
+// 添加请求拦截器 POST传参序列化
 service.interceptors.request.use((config) => {
   if (config.method === 'post') {
     config.data = qs.stringify(config.data)
@@ -26,10 +23,12 @@ service.interceptors.request.use((config) => {
   return Promise.reject(error)
 })
 
+// 添加响应拦截器
+
 // 返回状态判断
 service.interceptors.response.use(function (res) {
   // Notification({
-  //   message: '返回数据',
+  //   message: '返回成功',
   //   type: 'success',
   //   duration: 5 * 1000
   // })
@@ -45,14 +44,14 @@ service.interceptors.response.use(function (res) {
 
 export function getData(url) {
   return service({
-    url: 'http://47.107.171.45' + url,
+    url: process.env.baseUrl + url,
     method: 'get',
   })
 }
 
 export function postData(url, params) {
   return service({
-    url: 'http://47.107.171.45:80' + url,
+    url: process.env.baseUrl  + url,
     method: 'post',
     params
   })
@@ -70,10 +69,6 @@ export default {
   userInfoData() {
     return postData(Api + '/getUserInfo')
   },
-  // 插入数据 
-  // insertData() {
-  //   return postData(Api + '/addUserMsg')
-  // },
   // 友情链接 
   getfriend() {
     return postData(Api + '/getfriend')

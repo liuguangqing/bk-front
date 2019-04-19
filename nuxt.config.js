@@ -43,9 +43,8 @@ module.exports = {
     ]
   },
 
-  loading: {
-    color: '#CEA75C'
-  },
+  // loading: { color: '#CEA75C' },
+  loading: './components/Loading',
 
   css: [
     'element-ui/lib/theme-chalk/index.css',
@@ -89,6 +88,9 @@ module.exports = {
   },
   router: {
     // mode: 'hash'
+  },
+  env: {
+    baseUrl: 'http://47.107.171.45:80'
+    // baseUrl: 'https://www.xiangjv.top'
   }
-
 }
