@@ -3,8 +3,9 @@
   <section class="headerBox">
     <div class="headercontall">
       <div class="header">
-        <a href="/home/all-1">
+        <a href="http://www.xiangjv.top">
           <h1>XiangJv</h1>
+          <img src="http://xiangjv.top/xiangjv_trans_icon.png" alt="香菊网 - 🍊 香菊网，前端技术博客(xiangjv.top)">
         </a>
       </div>
       <el-menu
@@ -95,12 +96,22 @@ export default {
     width: 160px;
     text-align: center;
     a {
-      line-height: 60px;
       font-size: 30px;
       font-family: -webkit-pictograph;
       font-weight: 700;
       color: @ftcolor;
       background: #fff;
+      padding: 10px 0 0 0 ;
+      height: 60px;
+      box-sizing: border-box;
+      h1 {
+        position: fixed;
+        left: -200px;
+      }
+      img {
+        height: 50px;
+
+      }
     }
   }
   .el-menu {

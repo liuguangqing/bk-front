@@ -1,10 +1,10 @@
 <template>
     <div>
         <div class="user_icon" @click="showinfoFn">
-            <img src="http://xiangjv.top/xiaoxin.png" alt="">
+            <img src="http://xiangjv.top/xiangjv_user_icon.png" alt="">
         </div>
         <div class="user_list" v-show="showinfo" @click="showinfoFn">
-            <nuxt-link to="/home/all-1">首页</nuxt-link>
+            <a href="http://www.xiangjv.top">首页</a>
             <!-- <nuxt-link to="/msg">公告</nuxt-link> -->
             <nuxt-link to="/tag">标签云</nuxt-link>
             <nuxt-link to="/frontAbout">前端相关</nuxt-link>
@@ -36,10 +36,14 @@ export default {
     top: 100px;
     left: 20px;
     border-radius: 100%;
-    // background-color: red;
     img {
         width: 100%;
         height: 100%;
+        border-radius: 100%;
+        padding: 1px;
+        border: 1px solid #f0f0f0;
+        box-sizing: border-box;
+        background-color: #fff;
     }
 }
 .user_list {

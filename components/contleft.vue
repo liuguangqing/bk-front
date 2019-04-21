@@ -2,10 +2,10 @@
     <section  class="leftcontain" >
         <div :class="[{'right_all':fixedar}]">
             <div class="asidetit">
-                <img src="http://xiangjv.top/xiaoxin.png" alt="">
+                <img src="http://xiangjv.top/xiangjv_user_icon.png" alt="香菊网">
             </div>
             <div class="asidecon">
-                <nuxt-link to="/home/all-1">首页</nuxt-link>
+                <a href="http://www.xiangjv.top">首页</a>
                 <!-- <nuxt-link to="/msg">公告</nuxt-link> -->
                 <nuxt-link to="/tag">标签云</nuxt-link>
                 <nuxt-link to="/frontAbout">前端相关</nuxt-link>
@@ -64,8 +64,8 @@
         width: 55%;
         height: auto;
         border-radius: 100%;
-        padding: 7px;
-        background-color: rgba(0, 0, 0, 0.2);
+        padding: 5px;
+        background-color: rgba(200, 200, 200, 0.4);
     }
 
 }
