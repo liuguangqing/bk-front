@@ -5,7 +5,7 @@ module.exports = {
   mode: 'universal',
 
   head: {
-    title: '香菊网 - 🍊 香菊网，前端技术博客(xiangjv.top)',
+    title: '香菊网 - 🍊 技术分享，前端技术博客(xiangjv.top)',
     meta: [{
         charset: 'utf-8'
       },
@@ -20,12 +20,12 @@ module.exports = {
       {
         hid: 'keywords',
         name: 'keywords',
-        content: 'xiangjv.top,博客,香菊,香菊网,nuxt,CSDN,h5,xiangjv'
+        content: 'xiangjv.top,博客,香菊,香菊网,nuxt,CSDN,h5,xiangjv,html,css,js,h5,server,seo,软件,front,前端,笔记,nginx,nodeJs,ssr'
       },
       {
         hid: 'description',
         name: 'description',
-        content: 'xiangjv.top 提供给自己做笔记和联系的前端学习博客，nuxt框架 nodeJs+express  nginx+mysql'
+        content: 'xiangjv.top 提供自己做笔记和联系的前端学习博客，博客运用 nuxt+nodeJs+express+nginx+mysql'
       }, 
     ],
     link: [{

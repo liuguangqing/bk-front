@@ -78,16 +78,24 @@ export default {
       }
       return arrtemp
     }
+    console.log('params',params.home?params.home.split('-')[0]: '香菊网')
     return {
       essayList: m.data,
       navList: fn(navData.data),
       headNav:navData.data,
-      friendList:friendList.data
+      friendList:friendList.data,
+      showTitle: params.home?params.home.split('-')[0]: '香菊网'
+    }
+  },
+  head() {
+    return {
+      title: `${this.showTitle} - 🍊 技术分享，前端技术博客(xiangjv.top)`
     }
   },
   data() {
     return {
       getData: {},
+      showTitle: '',
       fixedar: false
     }
   },
