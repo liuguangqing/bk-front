@@ -2,7 +2,8 @@
   <section class="container">
     <header>
       <h2>{{essayDetail.es_title}}</h2>
-      <div>{{essayDetail.es_author}} 发表于： {{formatDate(essayDetail.es_isTime)}} 分类： {{essayDetail.es_tags}} {{essayDetail.es_view}} {{essayDetail.es_good}}</div>
+      <div>{{essayDetail.es_author}} 发表于： {{formatDate(essayDetail.es_isTime)}} 分类： <i v-for="(ite,ind) in essayDetail.es_tagList" :key="ind">{{ite}} &nbsp;</i> </div>
+      <!-- {{essayDetail.es_view}} {{essayDetail.es_good}} -->
     </header>
     <main class="context">
       <div class="conList">
@@ -16,13 +17,16 @@
         <span>关键词:</span>
         <i v-for="(ite,ind) in essayDetail.es_pasList" :key="ind">{{ite}}</i>
       </div>-->
-      <div class="essayList">
+    </main>
+    <!-- 篇幅 -->
+    <div class="essayList">
+      <div>
         <a :href="prveNext.next?'/indexDetail/' + prveNext.next.es_id:''" target="_bank">上一篇：{{prveNext.next?prveNext.next.es_title:'已经是第一篇'}}</a>
         <a :href="prveNext.prev?'/indexDetail/' + prveNext.prev.es_id:''" target="_bank">下一篇：{{prveNext.prev?prveNext.prev.es_title:'已经是最后一一篇'}}</a>
       </div>
-    </main>
-    <div>
-      <!-- 安装畅言 -->
+    </div>
+    <!-- 安装畅言 -->
+    <div class="changyanBox">
       <changyan :sendEssayId="essayDetail.es_id"/>
     </div>
   </section>
@@ -157,7 +161,6 @@ export default {
     createMobileNs()
     loadVersionJs()
     setTimeout(() => {
-      // Vue.use(VuePrism , {pscss})
       Prism.highlightAll()
     }, 500)
   },
@@ -165,22 +168,12 @@ export default {
     formatDate(date, fmt) {
       return formatDate(date, fmt)
     },
-    // async getGoodsDetil() {
-    //   let params = { essayId: this.essayId }
-    //   let data = await servers.getessayDetial(params)
-    //   this.load.close()
-    //   data.data.es_content = data.data.es_content.replace(/!!&!!/g, "'")
-    //   data.data.es_tagList = data.data.es_tags.split(',')
-    //   data.data.es_pasList = data.data.es_keywords.split(',')
-    //   this.essayDetail = data.data
-    //   console.log('essayDetail', this.essayDetail)
-    // }
   }
 }
 </script>
 <style scoped lang="less">
 .container {
-  padding: 10px 10px 0;
+  // padding: 10px 10px 0;
   min-height: 900px !important;
   font-family: PingFangSC-Regular, Microsoft Yahei;
 }
@@ -191,12 +184,9 @@ export default {
   box-sizing: border-box;
   padding-right: 10px;
 }
-.el-col .grid-content {
-  height: 200px;
-  background-color: rgba(250, 250, 250, 0.9);
-}
 header {
   border-bottom: 1px solid #c1c1c1;
+  padding:0 10px;
 }
 header > h2 {
   font-size: 36px;
@@ -209,10 +199,7 @@ header > div {
   font-size: 16px;
   color: #888;
 }
-main {
-  padding: 20px 0;
-  line-height: 24px;
-}
+
 .sharetitle {
   float: left;
   margin-top: 2px;
@@ -230,12 +217,28 @@ main {
   border-radius: 4px;
   color: #fff;
 }
-.essayList {
-  padding-top: 16px;
-  a {
-    padding: 4px 0;
-    color: #409EFF;
-  }
+main {
+  padding: 20px 10px;
+  line-height: 24px;
+  border-radius: 4px;
 }
+.essayList {
+  padding: 16px  0 ;
+  background: rgba(155, 155, 155, 0.3);
+  div {
+    padding: 20px 0;
+    border-radius: 4px;
+    background-color: rgba(250, 250, 250, 0.93);
+    a {
+      padding:4px 10px;
+      color: #409EFF;
+    }
+  }
 
+}
+.changyanBox{
+  padding: 0 10px ;
+  border-radius: 4px;
+  background-color: rgba(250, 250, 250, 0.93);
+}
 </style>
