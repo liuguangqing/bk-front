@@ -16,11 +16,14 @@
         <span>关键词:</span>
         <i v-for="(ite,ind) in essayDetail.es_pasList" :key="ind">{{ite}}</i>
       </div>-->
+      <div class="essayList">
+        <a :href="prveNext.next?'/indexDetail/' + prveNext.next.es_id:''" target="_bank">上一篇：{{prveNext.next?prveNext.next.es_title:'已经是第一篇'}}</a>
+        <a :href="prveNext.prev?'/indexDetail/' + prveNext.prev.es_id:''" target="_bank">下一篇：{{prveNext.prev?prveNext.prev.es_title:'已经是最后一一篇'}}</a>
+      </div>
     </main>
     <div>
       <!-- 安装畅言 -->
       <changyan :sendEssayId="essayDetail.es_id"/>
-
     </div>
   </section>
 </template>
@@ -32,17 +35,26 @@ import { formatDate } from '~/assets/js/base.js'
 export default {
   async asyncData ({ params, error, store }) {
     // 文章详情
-      let article = await  servers.getessayDetial({ essayId: params.indexDetail })
-      article.data.es_content = article.data.es_content.replace(/!!&!!/g, "'")
-      article.data.es_tagList = article.data.es_tags.split(',')
-      article.data.es_pasList = article.data.es_keywords.split(',')
-      return {
-        essayDetail: article.data
+    let article = await  servers.getessayDetial({ essayId: params.indexDetail })
+    article.data.es_content = article.data.es_content.replace(/!!&!!/g, "'")
+    article.data.es_tagList = article.data.es_tags.split(',')
+    article.data.es_pasList = article.data.es_keywords.split(',')
+    let essays = await  servers.getessayPage({ pageType: 'all' })
+    let currentPage = 0;
+    essays.data.forEach((e , i) => {
+      if(e.es_id == params.indexDetail) {
+        currentPage = i
       }
+    });
+    let prveNext = { prev: essays.data[currentPage - 1]?essays.data[currentPage - 1]:'' , next: essays.data[currentPage + 1]?essays.data[currentPage + 1]:'' }
+    return {
+      essayDetail: article.data,
+      prveNext
+    }
   },
   head() {
     return {
-      title: `${this.essayDetail.es_title} - 🍊 香菊网，前端技术博客(xiangjv.top)`,
+      title: `${this.essayDetail.es_title} - 🍊 技术分享，前端技术博客(xiangjv.top)`,
       meta: [
         {
           hid: 'description',
@@ -70,16 +82,13 @@ export default {
     changyan
   },
   created() {
-    
+    let essays = servers.getessayPage({ pageType: 'all' }).data
   },
   mounted() {
-    // this.load = this.$loading({ fullscreen: true })
     console.log(this.$route)
     this.essayId = this.$route.params.indexDetail
     var createNs = function() {
-      // if (window.changyan !== undefined) {
-      //   return;
-      // } else {
+
       window.changyan = {}
       window.changyan.api = {}
       window.changyan.api.config = function(conf) {
@@ -221,6 +230,12 @@ main {
   border-radius: 4px;
   color: #fff;
 }
-
+.essayList {
+  padding-top: 16px;
+  a {
+    padding: 4px 0;
+    color: #409EFF;
+  }
+}
 
 </style>
