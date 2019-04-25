@@ -23,23 +23,19 @@ import servers from '~/plugins/axios'
 
 export default {
   async asyncData ({ params, error, store }) {
+    console.log('首页index', params)
     let sendParams = {}
     sendParams.pageType = 'all'
     sendParams.pageNow = 1
     sendParams.pageSize = 5
-    console.log('sendParams',sendParams)
+    console.log('首页index',sendParams)
     // 文章列表
     let dataList = await servers.getessayPage(sendParams)
-    // 文章页码
-    let getessayTiao = await servers.getessayPage({pageType: 'all'})      
-    let allessay = getessayTiao.data.length
     let currentPage = sendParams.pageNow
     return {
       dataList: dataList.data,
-      allessay:allessay,
       currentPage: currentPage
     }
-
   },
   components: {
     contleft,
@@ -63,6 +59,9 @@ export default {
         .scrollTo(0, 0)
 　　}
   },
+  created() {
+    this.pageInit()
+  },
   methods: {
     geturl(getParam) {
       let paramsTemp = this.$route.params.home + ''
@@ -72,11 +71,18 @@ export default {
         return paramsTemp.split('-')[1]
       }
     },
+    // 页码初始化
+    async pageInit() {
+      // 文章页码
+      let getessayTiao = await servers.getessayPage({pageType: 'all'})      
+      let allessay = getessayTiao.data.length
+      this.allessay = allessay
+    },
     // 选择页数
     currentChange(e) {
       console.log('currentChange', e)
       this.currentPage = e
-      this.$router.push('/home/'+this.geturl('type')+'-' + e)
+      this.$router.push('/home/'+'all'+'-' + e)
     },
   }
 }

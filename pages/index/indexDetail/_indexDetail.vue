@@ -110,7 +110,6 @@ export default {
           window.changyan.tmpHandles.push(fn)
         }
       }
-      // }
     }
 
     var createMobileNs = function() {

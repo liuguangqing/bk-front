@@ -25,26 +25,17 @@ export default {
 
   async asyncData ({ params, error, store }) {
 
-    console.log('params',params.home)
+    console.log('首页params',params.home)
 
     let sendParams = {}
     sendParams.pageType = params.home.split('-')[0]
     sendParams.pageNow = params.home.split('-')[1]
     sendParams.pageSize = 5
-    console.log('sendParams',sendParams)
     // 文章列表
     let dataList = await servers.getessayPage(sendParams)
-    // 文章页码
-    let getessayTiao = await servers.getessayPage({pageType: params.home.split('-')[0]})      
-    let allessay = getessayTiao.data.length
-    let currentPage = params.home.split('-')[1] * 1
-
     return {
-      dataList: dataList.data,
-      allessay:allessay,
-      currentPage: currentPage
+      dataList: dataList.data
     }
-
   },
   components: {
     contleft,
@@ -68,6 +59,9 @@ export default {
         .scrollTo(0, 0)
 　　}
   },
+  created() {
+    this.pageInit()
+  },
   methods: {
     geturl(getParam) {
       let paramsTemp = this.$route.params.home + ''
@@ -76,6 +70,14 @@ export default {
       }else if(getParam == 'pageNo'){
         return paramsTemp.split('-')[1]
       }
+    },
+    // 页码初始化
+    async pageInit() {
+      // 文章页码
+      let getessayTiao = await servers.getessayPage({pageType: this.geturl('type')})      
+      let allessay = getessayTiao.data.length
+      this.allessay = allessay
+      this.currentPage = this.geturl('pageNo')*1
     },
     // 选择页数
     currentChange(e) {
