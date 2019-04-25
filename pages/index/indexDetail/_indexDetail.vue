@@ -39,6 +39,7 @@ import { formatDate } from '~/assets/js/base.js'
 export default {
   async asyncData ({ params, error, store }) {
     // 文章详情
+    console.log('进入详情',params.indexDetail)
     let article = await  servers.getessayDetial({ essayId: params.indexDetail })
     article.data.es_content = article.data.es_content.replace(/!!&!!/g, "'")
     article.data.es_tagList = article.data.es_tags.split(',')

@@ -9,6 +9,7 @@
           :total="allessay"
           @current-change="currentChange"
           :current-page="currentPage"
+          :page-size="5"
         >
         </el-pagination>
       </div>
@@ -26,7 +27,6 @@ export default {
   async asyncData ({ params, error, store }) {
 
     console.log('首页params',params.home)
-
     let sendParams = {}
     sendParams.pageType = params.home.split('-')[0]
     sendParams.pageNow = params.home.split('-')[1]

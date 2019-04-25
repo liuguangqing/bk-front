@@ -4,7 +4,7 @@
     <div class="paging">
       <div class="block">
         <el-pagination
-          layout="prev, pager, next"
+          layout="total, prev, pager, next, jumper"
           :pager-count="5"
           :total="allessay"
           @current-change="currentChange"
