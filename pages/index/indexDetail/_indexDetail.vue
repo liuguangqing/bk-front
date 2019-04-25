@@ -220,6 +220,9 @@ main {
   padding: 20px 10px;
   line-height: 24px;
   border-radius: 4px;
+  /deep/ img {
+    max-width: 100% !important;
+  }
 }
 .essayList {
   padding: 16px  0 ;
