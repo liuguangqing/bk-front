@@ -54,6 +54,7 @@ export default {
 　　// 利用watch方法检测路由变化：
 　　'$route': function (to, from) {
       console.log('路由刷新')
+      this.pageInit()
       let scrollgo = document
         .getElementsByClassName('conttall')[0]
         .scrollTo(0, 0)

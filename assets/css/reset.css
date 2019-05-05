@@ -74,6 +74,26 @@ pre {
 	border-radius:6px ;
 }
 main.context h1,main.context h2,main.context h3,main.context h4,main.context h5,main.context h6 {
-	font-size: inherit !important;
-	font-weight: bold !important;
+	font-weight: 500 !important;
+	font-family: '微软雅黑';
+	margin: 6px 0;
+	text-indent: 25px;
+}
+main.context h1 {
+	font-size: 32px !important;
+}
+main.context h2 {
+	font-size: 24px !important;
+}
+main.context h3 {
+	font-size: 18.72px !important;
+}
+main.context h4 {
+	font-size: 16px !important;
+}
+main.context h5 {
+	font-size: 13.28px !important;
+}
+main.context h6 {
+	font-size: 12px !important;
 }
