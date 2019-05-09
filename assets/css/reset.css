@@ -71,29 +71,35 @@ html, body {
 	display: none !important;
 }
 pre {
-	border-radius:6px ;
+	border-radius:4px ;
 }
 main.context h1,main.context h2,main.context h3,main.context h4,main.context h5,main.context h6 {
-	font-weight: 500 !important;
+	font-weight: 600 !important;
 	font-family: '微软雅黑';
 	margin: 6px 0;
 	text-indent: 25px;
 }
 main.context h1 {
 	font-size: 32px !important;
+	line-height: 42px;
 }
 main.context h2 {
 	font-size: 24px !important;
+	line-height: 34px;
 }
 main.context h3 {
 	font-size: 18.72px !important;
+	line-height: 28.72px;
 }
 main.context h4 {
 	font-size: 16px !important;
+	line-height: 26px ;
 }
 main.context h5 {
 	font-size: 13.28px !important;
+	line-height: 23.28px;
 }
 main.context h6 {
 	font-size: 12px !important;
+	line-height: 22px;
 }

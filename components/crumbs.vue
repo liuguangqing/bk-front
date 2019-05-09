@@ -1,11 +1,6 @@
 <template>
   <div>
-
-    <el-tag v-for="(ite,ind) in dataTag" :key="ind">{{ite}}</el-tag>
-    <!-- <el-tag type="success">标签二</el-tag>
-    <el-tag type="info">标签三</el-tag>
-    <el-tag type="warning">标签四</el-tag>
-    <el-tag type="danger">标签五</el-tag> -->
+    <el-tag v-for="(ite,ind) in dataTag" :key="ind"  size="mini"  type="warning">{{ite}}</el-tag>
   </div>
 </template>
 <script>
@@ -25,6 +20,32 @@ export default {
 </script>
 <style lang="less" scoped>
   .el-tag{
-    margin-right: 10px
+    margin-right: 10px;
+    padding: 0 16px;
+    position: relative;
+    border-left: none;
+    border-right: none;
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+      border-left: 6px solid rgba(250, 250, 250, 0.93);
+      position: absolute;
+      left: 0;
+      top: -1px;
+    }
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+      border-right: 6px solid rgba(250, 250, 250, 0.93);
+      position: absolute;
+      right: 0;
+      top: -1px;
+    }
   }
 </style>

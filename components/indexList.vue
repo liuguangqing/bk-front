@@ -91,7 +91,7 @@ export default {
     border-bottom: 1px solid #ccc;
     padding-top: 10px;
     .img {
-      width: 260px;
+      width: 240px;
       height: 145px;
       border-radius: 3px;
       transition: 0.4s;
@@ -100,7 +100,7 @@ export default {
       margin-right: 20px;
       img {
         width: 100%;
-        height: 100%;
+        height: auto;
       }
     }
     .img:hover {
@@ -109,7 +109,8 @@ export default {
     .text {
       flex-grow: 0;
       h2 {
-        font-size: 24px;
+        font-size: 20px;
+        line-height: 32px;
       }
       p {
         margin: 10px 0;
@@ -120,7 +121,8 @@ export default {
         height: 80px;
         overflow: hidden;
         -webkit-box-orient: vertical;
-        line-height: 28px;
+        font-size: 15px;
+        line-height: 26px;
       }
       .crumbs {
         margin-bottom: 10px;
@@ -130,7 +132,7 @@ export default {
       .date {
         margin-bottom: 10px;
         font-size: 14px;
-        color: #e6a23c;
+        color: #409eff;
         text-align: right;
       }
     }

@@ -189,14 +189,14 @@ header {
   padding:0 10px;
 }
 header > h2 {
-  font-size: 36px;
+  font-size: 25px;
   color: #555;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 25px;
 }
 header > div {
   padding: 10px 0;
-  font-size: 16px;
+  font-size: 14px;
   color: #888;
 }
 
@@ -221,9 +221,12 @@ main {
   padding: 20px 10px;
   line-height: 24px;
   border-radius: 4px;
+  color: #666;
+  font-size: 16px;
   /deep/ img {
     max-width: 100% !important;
   }
+  
 }
 .essayList {
   padding: 16px  0 ;

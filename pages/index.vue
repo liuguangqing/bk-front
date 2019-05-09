@@ -161,7 +161,7 @@ export default {
   .grid-content {
     padding-top: 20px;
     background-color: rgba(250, 250, 250, 0.93);
-    border-radius: 6px;
+    border-radius: 4px;
   }
 }
 .el-row {
