@@ -5,7 +5,7 @@
       <div class="header">
         <a href="http://www.xiangjv.top">
           <h1>XiangJv</h1>
-          <img src="http://xiangjv.top/xiangjv_trans_icon.png" alt="香菊网 - 🍊 香菊网，前端技术博客(xiangjv.top)">
+          <img src="http://www.xiangjv.top/xiangjv_trans_icon.png" alt="香菊网 - 🍊 香菊网，前端技术博客(xiangjv.top)">
         </a>
       </div>
       <el-menu

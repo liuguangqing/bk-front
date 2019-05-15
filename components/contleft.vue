@@ -2,7 +2,7 @@
     <section  class="leftcontain" >
         <div :class="[{'right_all':fixedar}]">
             <div class="asidetit">
-                <img src="http://xiangjv.top/xiangjv_user_icon.png" alt="香菊网">
+                <img src="http://www.xiangjv.top/xiangjv_user_icon.png" alt="香菊网">
             </div>
             <div class="asidecon">
                 <a href="http://www.xiangjv.top">首页</a>
