@@ -221,7 +221,7 @@ main {
   padding: 20px 10px;
   line-height: 24px;
   border-radius: 4px;
-  color: #666;
+  color: #444;
   font-size: 16px;
   /deep/ img {
     max-width: 100% !important;
