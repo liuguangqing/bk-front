@@ -28,7 +28,7 @@ export default {
         height: 100%;
         min-height: 400px;
         border-radius: 10px;
-        background:#fff url(http://xiangjv.top/xiangjv_404.png) no-repeat center top / 40%;
+        background:#fff url(http://www.xiangjv.top/xiangjv_404.png) no-repeat center top / 40%;
         text-align: center;
         padding-top: 33%;
         color: #2e2e2e;
