@@ -84,7 +84,8 @@ module.exports = {
     // mode: 'hash'
   },
   env: {
-    baseUrl: 'http://47.107.171.45:80'
-    // baseUrl: 'https://www.xiangjv.top'
+    baseUrl: 'http://47.107.171.45:2345'
+    // baseUrl: 'http://47.107.171.45:80'
+    // baseUrl: 'http://www.xiangjv.top'
   }
 }
