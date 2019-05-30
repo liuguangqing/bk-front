@@ -1,4 +1,15 @@
-# `
+## 技术栈 nuxtJs + element-UI
+
+## 预览地址
+(效果预览)[http://www.xiangjv.top/]
+
+## 演示图
+![](./assets/images/wwwxiangjvfront.jpg)
+
+## 提示
+(nuxt官网)[https://nuxtjs.org/api]
+
+
 
 > nkdes bk
 
