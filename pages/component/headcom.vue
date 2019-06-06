@@ -75,7 +75,11 @@ export default {
       // 文章页码
       let getessayTiao = await servers.searchPage({Val: this.searchVal})      
       let allessay = getessayTiao.data
-      this.$emit('searchSay',allessay )
+      if(allessay && allessay.length > 0) {
+        this.$emit('searchSay',allessay )
+      }else {
+        this.$message('没有搜索到相关文章');
+      }
     },
     searchIconFn(){
       this.showIcon = !this.showIcon 
