@@ -44,7 +44,7 @@
         </el-submenu>
         <el-menu-item disabled index="search">
           <i class="el-icon-search" v-if="showIcon" @click='searchIconFn'></i>
-          <input v-if="!showIcon"  type="text" placeholder="搜索..." class="searchBox" v-model="searchVal" @blur='onblurFu'  @keyup.enter="searchFn">
+          <input v-if="!showIcon"  type="text" placeholder="搜索..." class="searchBox" v-model="searchVal" @blur='onblurFu' @focus='focusFu'  @keyup.enter="searchFn">
         </el-menu-item>
       </el-menu>
     </div>
@@ -53,7 +53,7 @@
 </template>
 <script>
 import servers from '~/plugins/axios'
-
+let timeOut = ''
 export default {
   data() {
     return {
@@ -86,9 +86,13 @@ export default {
     },
     onblurFu() {
       console.log('失去焦点')
-      setTimeout(() => {
+      timeOut = setTimeout(() => {
         this.showIcon = true
       }, 4000);
+    },
+    focusFu() {
+      clearTimeout(timeOut)
+      this.showIcon = false
     }
   }
 }
