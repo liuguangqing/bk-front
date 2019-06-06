@@ -77,7 +77,10 @@ main.context h1,main.context h2,main.context h3,main.context h4,main.context h5,
 	font-weight: 600 !important;
 	font-family: '微软雅黑';
 	margin: 6px 0;
-	text-indent: 25px;
+	background: #f0f0f0;
+    border-left: 6px solid #ffa37a;
+    padding-left: 14px;
+	/* text-indent: 25px; */
 }
 main.context h1 {
 	font-size: 32px !important;
