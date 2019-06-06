@@ -1,8 +1,9 @@
 <template>
   <section class="container">
+    <div v-if="showSearch" class="searchTit">搜索结果：共 {{dataList.length}} 条相关的文章</div>
     <index-list v-for="(ite,ind) in dataList" :key="ind" :sendIte="ite"/>
     <div class="paging">
-      <div class="block">
+      <div class="block" v-if="!showSearch">
         <el-pagination
           layout="total, prev, pager, next, jumper"
           :pager-count="5"
@@ -50,6 +51,7 @@ export default {
       currentPage: 1
     }
   },
+  props: ['showSearch', 'ValList'],
   watch: {
 　　// 利用watch方法检测路由变化：
 　　'$route': function (to, from) {
@@ -58,7 +60,13 @@ export default {
       let scrollgo = document
         .getElementsByClassName('conttall')[0]
         .scrollTo(0, 0)
-　　}
+　　},
+    ValList(val, oldval) {
+      console.log(val)
+      if(val && val.length> 0) {
+        this.dataList = val
+      }
+    }
   },
   created() {
     this.pageInit()
@@ -128,6 +136,13 @@ export default {
   /deep/ .el-icon.more {
     background-color: transparent !important;
   }
+}
+.searchTit {
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  line-height:30px;
+  padding-left:8px;
+  font-size:14px;
 }
 </style>
 <style>

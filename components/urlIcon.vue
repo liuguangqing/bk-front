@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="user_icon" @click="showinfoFn">
-            <img src="http://xiangjv.top/xiangjv_user_icon.png" alt="">
+            <img src="http://www.xiangjv.top/xiangjv_user_icon.png" alt="">
         </div>
         <div class="user_list" v-show="showinfo" @click="showinfoFn">
             <a href="http://www.xiangjv.top">首页</a>

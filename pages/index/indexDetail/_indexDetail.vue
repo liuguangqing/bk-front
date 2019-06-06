@@ -59,7 +59,7 @@ export default {
   },
   head() {
     return {
-      title: `${this.essayDetail.es_title} - 🍊 技术分享，前端技术博客(xiangjv.top)`,
+      title: `${this.essayDetail.es_title} - 🍊 技术分享，前端技术博客(www.xiangjv.top)`,
       meta: [
         {
           hid: 'description',

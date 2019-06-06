@@ -5,7 +5,7 @@ module.exports = {
   mode: 'universal',
 
   head: {
-    title: '香菊网 - 🍊 技术分享，前端技术博客(xiangjv.top)',
+    title: '香菊网 - 🍊 技术分享，前端技术博客(www.xiangjv.top)',
     meta: [{
         charset: 'utf-8'
       },
@@ -20,12 +20,12 @@ module.exports = {
       {
         hid: 'keywords',
         name: 'keywords',
-        content: 'xiangjv.top,博客,香菊,香菊网,nuxt,CSDN,h5,xiangjv,html,css,js,h5,server,seo,软件,front,前端,笔记,nginx,nodeJs,ssr'
+        content: 'www.xiangjv.top,博客,香菊,香菊网,nuxt,CSDN,h5,xiangjv,html,css,js,h5,server,seo,软件,front,前端,笔记,nginx,nodeJs,ssr'
       },
       {
         hid: 'description',
         name: 'description',
-        content: 'xiangjv.top 提供自己做笔记和联系的前端学习博客，博客运用 nuxt+nodeJs+express+nginx+mysql'
+        content: 'www.xiangjv.top 提供自己做笔记和联系的前端学习博客，博客运用 nuxt+nodeJs+express+nginx+mysql'
       }, 
     ],
     link: [{
@@ -67,7 +67,7 @@ module.exports = {
   proxy: [
     [
       '/api',{
-        // target: 'http://172.20.54.151:2345/api',
+        // target: 'http://172.21.44.67:2345/api',
         target: 'http://47.107.171.45:2345/api',
         changeOrigin:true,
         pathRewrite: {
@@ -84,6 +84,7 @@ module.exports = {
     // mode: 'hash'
   },
   env: {
+    // baseUrl: 'http://172.21.44.67:2345'
     baseUrl: 'http://47.107.171.45:2345'
     // baseUrl: 'http://47.107.171.45:80'
     // baseUrl: 'http://www.xiangjv.top'

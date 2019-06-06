@@ -18,9 +18,6 @@
         text-color="#fff"
         active-text-color="#ffd04b"
       >
-        <!-- <el-menu-item disabled index="search">
-        <input type="text" placeholder="搜索...">
-        </el-menu-item>-->
         <el-menu-item
           :index="'/home/' + (ite0.cont?ite0.cont:'all') + '-1'"
           v-for="( ite0, ind0 ) in navList"
@@ -45,6 +42,10 @@
             <nuxt-link :to="'/home/' + ite2.cont + '-1'">{{ite2.title}}</nuxt-link>
           </el-menu-item>
         </el-submenu>
+        <el-menu-item disabled index="search">
+          <i class="el-icon-search" v-if="showIcon" @click='searchIconFn'></i>
+          <input v-if="!showIcon"  type="text" placeholder="搜索..." class="searchBox" v-model="searchVal" @blur='onblurFu'  @keyup.enter="searchFn">
+        </el-menu-item>
       </el-menu>
     </div>
   </section>
@@ -58,12 +59,33 @@ export default {
     return {
       activeIndex: '1',
       activeIndex2: '1',
+      searchVal: '',
+      showIcon: true
     }
   },
   props: ['navList'],
   methods: {
     handleSelect(key, keyPath) {
     },
+    searchFn() {
+      this.searchAjax(this.searchVal)
+    },
+    // 页码初始化
+    async searchAjax(searchVal) {
+      // 文章页码
+      let getessayTiao = await servers.searchPage({Val: this.searchVal})      
+      let allessay = getessayTiao.data
+      this.$emit('searchSay',allessay )
+    },
+    searchIconFn(){
+      this.showIcon = !this.showIcon 
+    },
+    onblurFu() {
+      console.log('失去焦点')
+      setTimeout(() => {
+        this.showIcon = true
+      }, 4000);
+    }
   }
 }
 </script>
@@ -132,5 +154,22 @@ export default {
   .el-menu-item{
     background-color: @bgcolor !important;
   }
+}
+.el-menu-item.is-disabled {
+  cursor: zoom-in ;
+}
+.el-icon-search {
+  color: #000 !important;
+  font-weight: 700;
+  font-size: 32px !important;
+}
+.searchBox {
+  width: 120px;
+  border-radius: 17px;
+  padding-left: 4px;
+  height: 24px;
+  border: 2px solid #0070d3;
+  font-size: 16px;
+  color: #000;
 }
 </style>

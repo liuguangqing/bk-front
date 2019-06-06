@@ -90,6 +90,11 @@ export default {
   getFrontAbout(params) {
     return postData(Api + '/getFrontAbout', params)
   },
+
+  // 文章搜索
+  searchPage(params) {
+    return postData(Api + '/searchPage', params)
+  },
   // 标签云
   // getTagsList(params) {
   //   return postData(Api + '/getTagsList', params)

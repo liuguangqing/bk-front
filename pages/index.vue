@@ -1,7 +1,7 @@
 <template>
   <section class="container">
 
-    <headecom :navList="headNav"/>
+    <headecom :navList="headNav" @searchSay='searchSay'/>
 
     <div>
       <div class="contcent">
@@ -13,14 +13,12 @@
           </el-col>
           <el-col :span="15" class="md_content">
             <div class="grid-content bg-purple-light conter_box">
-              <nuxt-child/>
+              <nuxt-child :showSearch="showSearch" :ValList='ValList'/>
             </div>
           </el-col>
           <el-col :span="5">
             <div class="grid-content bg-purple-light md_display">
-
               <contright :rightNavList="navList"  :essayList="essayList"/>
-
             </div>
           </el-col>
         </el-row>
@@ -89,14 +87,16 @@ export default {
   },
   head() {
     return {
-      title: `${this.showTitle} - 🍊 技术分享，前端技术博客(xiangjv.top)`
+      title: `${this.showTitle} - 🍊 技术分享，前端技术博客(www.xiangjv.top)`
     }
   },
   data() {
     return {
       getData: {},
       showTitle: '',
-      fixedar: false
+      fixedar: false,
+      showSearch: false,
+      ValList: []
     }
   },
   components: {
@@ -122,6 +122,16 @@ export default {
     formatDatea(dats,fmt){
       return formatDate(dats)
     },
+    searchSay(ValList) {
+      this.showSearch = true
+      this.ValList = ValList
+    }
+  },
+  watch: {
+　　// 利用watch方法检测路由变化：
+　　'$route': function (to, from) {
+      this.showSearch = false
+　　}
   },
 }
 </script>

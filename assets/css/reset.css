@@ -106,3 +106,4 @@ main.context h6 {
 	font-size: 12px !important;
 	line-height: 22px;
 }
+input:focus {    outline:none;}  /*  focus 标记*/
