@@ -225,6 +225,12 @@ main {
   font-size: 16px;
   /deep/ img {
     max-width: 100% !important;
+    margin: 6px auto ;
+  }
+  /deep/ a {
+    display: inline-block;
+    padding: 0 8px;
+    border-radius: 2px ;
   }
   
 }
