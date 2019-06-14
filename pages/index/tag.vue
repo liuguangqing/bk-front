@@ -13,6 +13,18 @@
 <script>
 import servers from '~/plugins/axios'
 export default {
+  head() {
+    return {
+      title: `标签云 - 🍊 技术分享，香菊网-前端技术博客(www.xiangjv.top)`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `标签云 - 🍊 技术分享，香菊网-前端技术博客(www.xiangjv.top)`
+        }
+      ]
+    }
+  },
   async asyncData ({ params, error, store }) {
     let colorArr = ['','success', 'info', 'warning', 'danger']
     // 标签列表

@@ -4,11 +4,19 @@
   </section>
 </template>
 <script>
-// import contleft from '~/components/contleft'
 export default {
-  // components:{
-    // contleft
-  // }
+  head() {
+    return {
+      title: `关于香菊网 - 🍊 技术分享，香菊网-前端技术博客(www.xiangjv.top)`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `关于香菊网 - 🍊 技术分享，香菊网-前端技术博客(www.xiangjv.top)`
+        }
+      ]
+    }
+  },
 }
 </script>
 <style scoped lang="less">

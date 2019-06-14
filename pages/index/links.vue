@@ -19,6 +19,18 @@
 <script>
 import servers from '~/plugins/axios'
 export default {
+  head() {
+    return {
+      title: `友情链接 - 🍊 技术分享，香菊网-前端技术博客(www.xiangjv.top)`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `友情链接 - 🍊 技术分享，香菊网-前端技术博客(www.xiangjv.top)`
+        }
+      ]
+    }
+  },
   async asyncData ({ params, error, store }) {
     // 友链列表
     let linkdata = await servers.getfriend()

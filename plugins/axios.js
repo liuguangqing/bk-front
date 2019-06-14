@@ -74,9 +74,9 @@ export default {
     return postData(Api + '/getfriend')
   },
   // 文章列表（所有）
-  getessayAll(params) {
-    return postData(Api + '/getessayAll', params)
-  },
+  // getessayAll(params) {
+  //   return postData(Api + '/getessayAll', params)
+  // },
   // 文章列表（分页）
   getessayPage(params) {
     return postData(Api + '/getessayPage', params)

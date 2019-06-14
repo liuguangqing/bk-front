@@ -32,7 +32,6 @@
   </section>
 </template>
 <script>
-// import contleft from '~/components/contleft'
 import changyan from '~/components/changyan'
 import servers from '~/plugins/axios'
 import { formatDate } from '~/assets/js/base.js'
@@ -59,7 +58,7 @@ export default {
   },
   head() {
     return {
-      title: `${this.essayDetail.es_title} - 🍊 技术分享，前端技术博客(www.xiangjv.top)`,
+      title: `${this.essayDetail.es_title} - 🍊 技术分享，香菊网前端技术博客(www.xiangjv.top)`,
       meta: [
         {
           hid: 'description',
@@ -85,9 +84,6 @@ export default {
   },
   components: {
     changyan
-  },
-  created() {
-    let essays = servers.getessayPage({ pageType: 'all' }).data
   },
   mounted() {
     console.log(this.$route)

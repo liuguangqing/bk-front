@@ -59,6 +59,18 @@
 import servers from '~/plugins/axios'
 import { formatDate } from '~/assets/js/base.js'
 export default {
+  head() {
+    return {
+      title: `前端相关 - 🍊 技术分享，香菊网-前端技术博客(www.xiangjv.top)`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `前端相关 - 🍊 技术分享，香菊网-前端技术博客(www.xiangjv.top)`
+        }
+      ]
+    }
+  },
   async asyncData ({ params, error, store }) {
     let sendparams = { cunt: 'css,js,H5', pageSize: 10 }
     // 前端相关

@@ -87,7 +87,7 @@ export default {
   },
   head() {
     return {
-      title: `${this.showTitle} - 🍊 技术分享，前端技术博客(www.xiangjv.top)`
+      title: `${this.showTitle} - 🍊 技术分享，香菊网前端技术博客(www.xiangjv.top)`
     }
   },
   data() {

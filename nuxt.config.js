@@ -67,8 +67,8 @@ module.exports = {
   proxy: [
     [
       '/api',{
-        // target: 'http://172.21.44.67:2345/api',
-        target: 'http://47.107.171.45:2345/api',
+        target: 'http://172.21.44.67:2345/api',
+        // target: 'http://47.107.171.45:2345/api',
         changeOrigin:true,
         pathRewrite: {
         '^/api': '/'
@@ -84,8 +84,8 @@ module.exports = {
     // mode: 'hash'
   },
   env: {
-    // baseUrl: 'http://172.21.44.67:2345'
-    baseUrl: 'http://47.107.171.45:2345'
+    baseUrl: 'http://172.21.44.67:2345'
+    // baseUrl: 'http://47.107.171.45:2345'
     // baseUrl: 'http://47.107.171.45:80'
     // baseUrl: 'http://www.xiangjv.top'
   }
