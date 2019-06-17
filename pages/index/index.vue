@@ -6,11 +6,11 @@
       <div class="block" v-if="!showSearch">
         <el-pagination
           layout="total, prev, pager, next, jumper"
-          :pager-count="5"
+          :pager-count="7"
           :total="allessay"
           @current-change="currentChange"
           :current-page="currentPage"
-          :page-size="5">
+          :page-size="7">
         </el-pagination>
       </div>
     </div>
@@ -28,7 +28,7 @@ export default {
     let sendParams = {}
     sendParams.pageType = 'all'
     sendParams.pageNow = 1
-    sendParams.pageSize = 5
+    sendParams.pageSize = 7
     console.log('首页index',sendParams)
     // 文章列表
     let dataList = await servers.getessayPage(sendParams)

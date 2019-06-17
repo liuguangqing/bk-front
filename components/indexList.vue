@@ -85,6 +85,7 @@ export default {
   }
 }
 .bk_list {
+
   .bk_item {
     display: flex;
     justify-content: space-between;
@@ -92,20 +93,22 @@ export default {
     padding-top: 10px;
     .img {
       width: 240px;
-      height: 145px;
       border-radius: 3px;
       transition: 0.4s;
       flex-grow: 0;
       flex-shrink: 0;
       margin-right: 20px;
+      height: min-content;
+      perspective: 1000px;
       img {
         width: 100%;
         height: auto;
       }
     }
-    .img:hover {
-      transform: scale(1.1);
-    }
+    // .img:hover img {
+    //   transform: rotateX(360deg);
+    //   transition: all .6s;
+    // }
     .text {
       flex-grow: 0;
       h2 {
@@ -127,8 +130,6 @@ export default {
       .crumbs {
         margin-bottom: 10px;
       }
-      .crumbs:hover {
-      }
       .date {
         margin-bottom: 10px;
         font-size: 14px;
@@ -136,6 +137,16 @@ export default {
         text-align: right;
       }
     }
+  }
+  @keyframes tfy {
+    0% { transform: rotateX(0deg);}
+    100% { transform: rotateX(360deg);}
+    // 100% { transform: rotateX(0deg);}
+  }
+  .bk_item:hover .img{
+      // transform: rotateX(360deg);
+      // transition: all .6s;
+      animation: tfy .4s;
   }
 }
 </style>
