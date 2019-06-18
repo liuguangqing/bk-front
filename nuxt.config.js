@@ -32,6 +32,9 @@ module.exports = {
       rel: 'icon',
       type: 'image/x-icon',
       href: '/favicon.ico'
+    },{
+      rel: 'manifest',
+      href: '/manifest.json'
     }],
     script:[
       // 百度分享
