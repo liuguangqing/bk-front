@@ -62,15 +62,15 @@ export default {
 
 /*定义滚动条*/
 ::-webkit-scrollbar-thumb {
-    background-color: #bbb;
+    background-color: #e85e20;
     border-radius: 10px;
 }
 /*定义滚动条高宽及背景*/
 ::-webkit-scrollbar {
     background-color: transparent;
     // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.22);
-    width: 5px;
-    height:2px;
+    width: 6px;
+    height:6px;
 }
 .loading_box {
   width: 100%;

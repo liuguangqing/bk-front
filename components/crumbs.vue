@@ -31,7 +31,7 @@ export default {
       width: 0;
       height: 0;
       border: 10px solid transparent;
-      border-left: 6px solid rgba(250, 250, 250, 0.93);
+      border-left: 4px solid rgba(250, 250, 250, 0.93);
       position: absolute;
       left: 0;
       top: -1px;
@@ -42,7 +42,7 @@ export default {
       width: 0;
       height: 0;
       border: 10px solid transparent;
-      border-right: 6px solid rgba(250, 250, 250, 0.93);
+      border-right: 4px solid rgba(250, 250, 250, 0.93);
       position: absolute;
       right: 0;
       top: -1px;

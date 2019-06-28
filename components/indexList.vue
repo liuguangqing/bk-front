@@ -112,6 +112,7 @@ export default {
     .text {
       flex-grow: 0;
       h2 {
+        color: #333;
         font-size: 20px;
         line-height: 32px;
       }

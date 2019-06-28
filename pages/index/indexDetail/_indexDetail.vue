@@ -186,14 +186,14 @@ header {
 }
 header > h2 {
   font-size: 25px;
-  color: #555;
+  color: #333;
   font-weight: 400;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 header > div {
   padding: 10px 0;
   font-size: 14px;
-  color: #888;
+  color: #666;
 }
 
 .sharetitle {
@@ -215,20 +215,25 @@ header > div {
 }
 main {
   padding: 20px 10px;
-  line-height: 24px;
+  line-height: 32px;
   border-radius: 4px;
   color: #444;
   font-size: 16px;
+  letter-spacing: .6px;
   /deep/ img {
     max-width: 100% !important;
     margin: 6px auto ;
   }
   /deep/ a {
     display: inline-block;
-    padding: 0 8px;
+    // padding: 0 8px;
     border-radius: 2px ;
+    color: #3366ff;
+    text-decoration: underline;
   }
-  
+  /deep/ strong {
+    font-weight: 700;
+  }
 }
 .essayList {
   padding: 16px  0 ;

@@ -25,4 +25,7 @@ export default {
 }
 </script>
 <style lang="less">
+ /deep/ .module-cmt-list,.section-list-w {
+   display: none;
+ }
 </style>
