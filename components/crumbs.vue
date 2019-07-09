@@ -23,6 +23,10 @@ export default {
     margin-right: 10px;
     padding: 0 16px;
     position: relative;
+    margin-bottom: 4px;
+    border: 1px solid rgba(64,158,255,.2);
+    color: #0b351a;
+    background-color: rgba(46, 132, 89, 0.1);
     border-left: none;
     border-right: none;
     &::before {

@@ -2,7 +2,13 @@
   <section class="container">
     <header>
       <h2>{{essayDetail.es_title}}</h2>
-      <div>{{essayDetail.es_author}} 发表于： {{formatDate(essayDetail.es_isTime)}} 分类： <i v-for="(ite,ind) in essayDetail.es_tagList" :key="ind">{{ite}} &nbsp;</i> </div>
+      <div>
+        {{essayDetail.es_author}} 发表于： {{formatDate(essayDetail.es_isTime)}} 分类：
+        <i
+          v-for="(ite,ind) in essayDetail.es_tagList"
+          :key="ind"
+        >{{ite}} &nbsp;</i>
+      </div>
       <!-- {{essayDetail.es_view}} {{essayDetail.es_good}} -->
     </header>
     <main class="context">
@@ -21,13 +27,19 @@
     <!-- 篇幅 -->
     <div class="essayList">
       <div>
-        <a :href="prveNext.next?'/indexDetail/' + prveNext.next.es_id:''" target="_bank">上一篇：{{prveNext.next?prveNext.next.es_title:'已经是第一篇'}}</a>
-        <a :href="prveNext.prev?'/indexDetail/' + prveNext.prev.es_id:''" target="_bank">下一篇：{{prveNext.prev?prveNext.prev.es_title:'已经是最后一一篇'}}</a>
+        <a
+          :href="prveNext.next?'/indexDetail/' + prveNext.next.es_id:''"
+          target="_bank"
+        >上一篇：{{prveNext.next?prveNext.next.es_title:'已经是第一篇'}}</a>
+        <a
+          :href="prveNext.prev?'/indexDetail/' + prveNext.prev.es_id:''"
+          target="_bank"
+        >下一篇：{{prveNext.prev?prveNext.prev.es_title:'已经是最后一一篇'}}</a>
       </div>
     </div>
     <!-- 安装畅言 -->
     <div class="changyanBox">
-      <changyan :sendEssayId="essayDetail.es_id"/>
+      <changyan :sendEssayId="essayDetail.es_id" />
     </div>
   </section>
 </template>
@@ -36,21 +48,24 @@ import changyan from '~/components/changyan'
 import servers from '~/plugins/axios'
 import { formatDate } from '~/assets/js/base.js'
 export default {
-  async asyncData ({ params, error, store }) {
+  async asyncData({ params, error, store }) {
     // 文章详情
-    console.log('进入详情',params.indexDetail)
-    let article = await  servers.getessayDetial({ essayId: params.indexDetail })
+    console.log('进入详情', params.indexDetail)
+    let article = await servers.getessayDetial({ essayId: params.indexDetail })
     article.data.es_content = article.data.es_content.replace(/!!&!!/g, "'")
     article.data.es_tagList = article.data.es_tags.split(',')
     article.data.es_pasList = article.data.es_keywords.split(',')
-    let essays = await  servers.getessayPage({ pageType: 'all' })
-    let currentPage = 0;
-    essays.data.forEach((e , i) => {
-      if(e.es_id == params.indexDetail) {
+    let essays = await servers.getessayPage({ pageType: 'all' })
+    let currentPage = 0
+    essays.data.forEach((e, i) => {
+      if (e.es_id == params.indexDetail) {
         currentPage = i
       }
-    });
-    let prveNext = { prev: essays.data[currentPage - 1]?essays.data[currentPage - 1]:'' , next: essays.data[currentPage + 1]?essays.data[currentPage + 1]:'' }
+    })
+    let prveNext = {
+      prev: essays.data[currentPage - 1] ? essays.data[currentPage - 1] : '',
+      next: essays.data[currentPage + 1] ? essays.data[currentPage + 1] : ''
+    }
     return {
       essayDetail: article.data,
       prveNext
@@ -58,7 +73,9 @@ export default {
   },
   head() {
     return {
-      title: `${this.essayDetail.es_title} - 🍊 技术分享，香菊网前端技术博客(www.xiangjv.top)`,
+      title: `${
+        this.essayDetail.es_title
+      } - 🍊 技术分享，香菊网前端技术博客(www.xiangjv.top)`,
       meta: [
         {
           hid: 'description',
@@ -89,7 +106,6 @@ export default {
     console.log(this.$route)
     this.essayId = this.$route.params.indexDetail
     var createNs = function() {
-
       window.changyan = {}
       window.changyan.api = {}
       window.changyan.api.config = function(conf) {
@@ -163,7 +179,7 @@ export default {
   methods: {
     formatDate(date, fmt) {
       return formatDate(date, fmt)
-    },
+    }
   }
 }
 </script>
@@ -182,7 +198,7 @@ export default {
 }
 header {
   border-bottom: 1px solid #c1c1c1;
-  padding:0 10px;
+  padding: 0 10px;
 }
 header > h2 {
   font-size: 25px;
@@ -219,38 +235,64 @@ main {
   border-radius: 4px;
   color: #444;
   font-size: 16px;
-  letter-spacing: .6px;
+  letter-spacing: 0.6px;
   /deep/ img {
     max-width: 100% !important;
-    margin: 6px auto ;
+    margin: 6px auto;
   }
   /deep/ a {
     display: inline-block;
     // padding: 0 8px;
-    border-radius: 2px ;
+    border-radius: 2px;
     color: #3366ff;
     text-decoration: underline;
   }
   /deep/ strong {
     font-weight: 700;
   }
+  /deep/ table {
+    font-family: verdana, arial, sans-serif;
+    font-size: 11px;
+    color: #333333;
+    border-width: 1px;
+    border-color: #666666;
+    border-collapse: collapse;
+  }
+  /deep/ th {
+    border-width: 1px;
+    padding: 8px;
+    color: #fff;
+    text-align: center;
+    border-style: solid;
+    border-color: #3F3F3F;
+    background-color: #3F3F3F;
+  }
+  /deep/ td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #999;
+    background-color: #ffffff;
+  }
+  /deep/ table tr:nth-of-type(2n) td {
+    background-color: #F5F5F5;
+  }
 }
 .essayList {
-  padding: 16px  0 ;
+  padding: 16px 0;
   background: rgba(155, 155, 155, 0.3);
   div {
     padding: 20px 0;
     border-radius: 4px;
     background-color: rgba(250, 250, 250, 0.93);
     a {
-      padding:4px 10px;
-      color: #409EFF;
+      padding: 4px 10px;
+      color: #409eff;
     }
   }
-
 }
-.changyanBox{
-  padding: 0 10px ;
+.changyanBox {
+  padding: 0 10px;
   border-radius: 4px;
   background-color: rgba(250, 250, 250, 0.93);
 }
