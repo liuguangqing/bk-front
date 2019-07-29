@@ -5,11 +5,7 @@
   </section>
 </template>
 <script>
-import contleft from '~/components/contleft'
 export default {
-  components:{
-    contleft
-  }
 }
 </script>
 routes:[

@@ -11,14 +11,12 @@
   </section>
 </template>
 <script>
-// import contleft from '~/components/contleft'
 import indexList from '~/components/indexList'
 import { SimplePagination } from '~/assets/js/SimplePagination'
 
 import servers from '~/plugins/axios'
 export default {
   components: {
-    // contleft,
     indexList
   },
   data() {

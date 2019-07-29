@@ -35,7 +35,7 @@
   </section>
 </template>
 <script>
-import contleft from '~/components/contleft'
+import contleft from '~/pages/component/contleft'
 import contright from '~/pages/component/contright'
 import headecom from '~/pages/component/headcom'
 import footercom from '~/pages/component/footcom'

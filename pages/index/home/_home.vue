@@ -18,7 +18,6 @@
   </section>
 </template>
 <script>
-import contleft from '~/components/contleft'
 import indexList from '~/components/indexList'
 import { SimplePagination } from '~/assets/js/SimplePagination'
 import servers from '~/plugins/axios'
@@ -39,7 +38,6 @@ export default {
     }
   },
   components: {
-    contleft,
     indexList,
   },
   data() {
@@ -55,7 +53,7 @@ export default {
   watch: {
 　　// 利用watch方法检测路由变化：
 　　'$route': function (to, from) {
-      console.log('路由刷新')
+      console.log('路由刷新home')
       this.pageInit()
       let scrollgo = document
         .getElementsByClassName('conttall')[0]

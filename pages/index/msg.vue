@@ -4,11 +4,7 @@
   </section>
 </template>
 <script>
-// import contleft from '~/components/contleft'
 export default {
-  // components:{
-  //   contleft
-  // }
 }
 </script>
 <style scoped lang="less">

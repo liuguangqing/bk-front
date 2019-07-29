@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <div v-if="showSearch" class="searchTit">搜索结果：共 {{dataList.length}} 条相关的文章</div>
+    <div v-if="showSearch" class="searchTit">搜索结果：共 {{dataList.length}} 条与  <span style="color:red;">{{searchTxt}}</span> 相关的文章</div>
     <index-list v-for="(ite,ind) in dataList" :key="ind" :sendIte="ite"/>
     <div class="paging">
       <div class="block" v-if="!showSearch">
@@ -17,7 +17,6 @@
   </section>
 </template>
 <script>
-import contleft from '~/components/contleft'
 import indexList from '~/components/indexList'
 import { SimplePagination } from '~/assets/js/SimplePagination'
 import servers from '~/plugins/axios'
@@ -40,7 +39,6 @@ export default {
     }
   },
   components: {
-    contleft,
     indexList,
   },
   data() {
@@ -49,27 +47,29 @@ export default {
       pageType: '',
       params: {},
       allessay: 0,
-      currentPage: 1
+      currentPage: 1,
+      showSearch: false,
+      searchTxt: ''
     }
   },
-  props: ['showSearch', 'ValList'],
   watch: {
 　　// 利用watch方法检测路由变化：
 　　'$route': function (to, from) {
-      console.log('路由刷新')
+      console.log('路由刷新index' , to ,from)
+      if (this.$route.path == '/' && this.$route.query.searText) {
+        this.searchWord()
+      }else if (this.$route.path == '/') {
+        this.pageInit()
+      }
       let scrollgo = document
         .getElementsByClassName('conttall')[0]
         .scrollTo(0, 0)
-　　},
-    ValList(val, oldval) {
-      console.log(val)
-      if(val && val.length> 0) {
-        this.dataList = val
-      }
-    }
+　　}
   },
   created() {
     this.pageInit()
+    // 搜索词
+    this.searchWord()
   },
   methods: {
     geturl(getParam) {
@@ -93,6 +93,20 @@ export default {
       this.currentPage = e
       this.$router.push('/home/'+'all'+'-' + e)
     },
+    async searchWord () {
+      this.searchTxt = this.$route.query.searText
+      if (this.searchTxt) {
+        let getessayTiao = await servers.searchPage({Val: this.searchTxt})      
+        let allessay = getessayTiao.data
+        
+        if(allessay && allessay.length > 0) {
+          this.showSearch = true
+          this.dataList = allessay 
+        }else {
+          this.$message('没有搜索到相关文章');
+        }
+      }
+    }
   }
 }
 </script>
