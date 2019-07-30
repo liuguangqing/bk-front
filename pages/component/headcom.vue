@@ -42,10 +42,6 @@
             <nuxt-link :to="'/home/' + ite2.cont + '-1'">{{ite2.title}}</nuxt-link>
           </el-menu-item>
         </el-submenu>
-        <el-menu-item disabled index="search">
-          <i class="el-icon-search" v-if="showIcon" @click='searchIconFn'></i>
-          <input v-if="!showIcon"  type="text" placeholder="搜索..." class="searchBox" v-model="searchVal" @blur='onblurFu' @focus='focusFu'  @keyup.enter="searchFn">
-        </el-menu-item>
       </el-menu>
     </div>
   </section>

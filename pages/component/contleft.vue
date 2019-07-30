@@ -1,6 +1,6 @@
 <template>
     <section  class="leftcontain" >
-        <div :class="[{'right_all':fixedar}]">
+        <div :class="[{'right_all':true}]">
             <div class="asidetit">
                 <img src="http://www.xiangjv.top/xiangjv_user_icon.png" alt="香菊网">
             </div>
@@ -14,12 +14,13 @@
                 <nuxt-link to="/about">关于</nuxt-link>
             </div>
         </div>
-        <div class="search_box">
-          <input type="text" placeholder="搜索： nginx 启动 ..." class="searchInp"  v-model="searchVal" @keyup.enter="searchFn">
-          <div class="putText">
-            <span v-for="(ite, ind ) in btnBox" :key="ind" @click="gofor(ite)">{{ite}}</span>
+        <div :class="['search_box', {'right_search': true}]">
+          <input type="text" placeholder="搜索： nginx 启动 ..." :class="['searchInp', {'hover_Inp': fixedar}]" v-model="searchVal" @keyup.enter="searchFn">
+          <div :class="['putText', {'hover_putText': fixedar}]">
+            <span v-for="(ite, ind ) in btnBox" @click="gofor(ite)" :key="ind" :style="{'color': readomFn()}">{{ite}}</span>
           </div>
         </div>
+        <div class="locat"><span> </span></div>
     </section>
 </template>
 <script>
@@ -28,7 +29,8 @@
       return {
           fixedar: false,
           searchVal: '',
-          btnBox: ['vue', 'nginx', 'nuxt', 'js']
+          btnBox: ['微信', 'nginx', 'nuxt', 'PM2'],
+          thems:['#F56C6C', '#67C23A', '#E6A23C' , '#409EFF', '#909399']
       }
     },
     components : {
@@ -37,6 +39,9 @@
         this.scrollLIst()
     },
     methods: {
+      readomFn () {
+        return this.thems[parseInt(Math.random() * 5)]
+      },
       scrollLIst(){
         let _this = this
         let scrollright = document.getElementsByClassName('conttall')[0]
@@ -69,6 +74,14 @@
   background-color: rgba(250, 250, 250, 0.93);
   border-radius:4px;
 }
+.right_search {
+  position: fixed;
+  width: 192px;
+  top: 493px;
+}
+.locat {
+  visibility: hidden;
+}
 .leftcontain {
   width: 192px;
   & > div {
@@ -80,20 +93,11 @@
   .search_box {
     padding: 6px 4px;
     box-sizing: border-box;
-    &:hover {
-      .searchInp { 
-        border: 2px solid #67C23A;
-      }
-      .putText {
-        height: 60px;
-        // padding: 4px 10px;
-      }
-    }
-    .putText {
+    & > .putText {
       width: 100%;
       height: 0;
       overflow: hidden;
-      padding: 0 10px;
+      padding: 0 4px;
       box-sizing: border-box;
       transform: translateY(4px);
       font-size: 12px;
@@ -102,16 +106,15 @@
       transition: height .8s;
       span {
         box-sizing: border-box;
-        border: 1px solid #b1b1b1;
-        border-radius: 4px;
-        padding:0px 6px;
+        // border: 1px solid #b1b1b1;
+        // border-radius: 4px;
+        text-decoration: underline;
+        padding: 0px 4px;
         margin: 0 6px 6px 0;
         cursor: pointer;
+        display: inline-block;
       }
     }
-    // padding: 10px;
-    // border-radius: 20px;
-    // height: 40px;
 
     .searchInp {
       width: 100%;
@@ -121,6 +124,20 @@
       padding: 4px 8px;
       opacity: .8;
       border: 2px solid #e85e20;
+    }
+    &:hover {
+      .searchInp { 
+        border: 2px solid #67C23A;
+      }
+      .putText {
+        height: 60px;
+      }
+    }
+    .hover_putText {
+      height: 60px;
+    }
+    .hover_Inp {
+        border: 2px solid #67C23A;
     }
   }
 }
